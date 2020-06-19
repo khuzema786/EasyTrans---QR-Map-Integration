@@ -1,4 +1,5 @@
-//Just to Globally use a Spinner as we load :)
+// SPINNER --> PRE-LOADER
+
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:qr_gen_rd/styles/style.dart';

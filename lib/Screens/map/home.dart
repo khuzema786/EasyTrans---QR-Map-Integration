@@ -1,9 +1,10 @@
 import 'package:qr_gen_rd/states/app_state.dart'; //AppState Management
 import 'package:qr_gen_rd/styles/style.dart'; //Stylesheet
+import 'package:qr_gen_rd/Screens/payments/payment.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:qr_gen_rd/styles/loading.dart';
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
@@ -47,10 +48,7 @@ class _MapState extends State<Map> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  SpinKitCubeGrid(
-                    color: pink,
-                    size: 50.0,
-                  )
+                  Loading(),
                 ],
               ),
               SizedBox(
@@ -180,6 +178,19 @@ class _MapState extends State<Map> {
                     ),
                   ),
                 ),
+              ),
+              RaisedButton(
+                color: pink,
+                textColor: Colors.white,
+                splashColor: Colors.pink,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(18.0),
+                ),
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Payments()));
+                },
+                child: const Text('Book Now'),
               ),
             ],
           );

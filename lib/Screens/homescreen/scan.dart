@@ -1,12 +1,11 @@
-/*Scans qr codes
-Used barcode_scan package */
+// QR SCANNER -- BARCODE SCAN PACKAGE
 
-
-import 'dart:async';  //for asynchrounous(parallel) computing
-import 'package:barcode_scan/barcode_scan.dart';  //required package
-import 'package:flutter/material.dart';           //base package
+import 'dart:async';
+import 'package:barcode_scan/barcode_scan.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:qr_gen_rd/styles/style.dart';           //Platform specific services
+import 'package:qr_gen_rd/styles/style.dart';
+import 'package:qr_gen_rd/Screens/requests/iot_temp.dart';
 
 class ScanScreen extends StatefulWidget{
   @override
@@ -14,13 +13,8 @@ class ScanScreen extends StatefulWidget{
 }
 
 class _ScanState extends State<ScanScreen>{
-  String barcode = "";  //to store barcode info
-
-  //@override
-  /*void initState() {
-    super.initState();
-  }*/   
-  //After Testing remove this in final Version
+  String barcode = "";  // To store barcode info
+  String tempResult =""; // To store temp result
 
   @override
   Widget build(BuildContext context){
@@ -30,8 +24,8 @@ class _ScanState extends State<ScanScreen>{
       ),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,     //center vertically
-          crossAxisAlignment: CrossAxisAlignment.stretch, //stretched horizontally
+          mainAxisAlignment: MainAxisAlignment.center,     // Center vertically
+          crossAxisAlignment: CrossAxisAlignment.stretch, // Stretched horizontally
           children: <Widget>[
             Padding(
               padding: EdgeInsets.all(17),
@@ -47,7 +41,12 @@ class _ScanState extends State<ScanScreen>{
               ),
             ),
             Padding(padding: EdgeInsets.all(15),
-            child:Text(barcode,textAlign: TextAlign.center,), //output text....displayed after scan is done
+            child:Column(
+              children: <Widget>[
+                Text(barcode,textAlign: TextAlign.center,),
+                Text(tempResult,textAlign: TextAlign.center,),
+              ],
+            ), //output text....displayed after scan is done
             ),
           ],
         ),
@@ -58,9 +57,12 @@ class _ScanState extends State<ScanScreen>{
   Future scan() async{
     try{
       ScanResult result = await BarcodeScanner.scan();
+      String temp = await IotServices().getTemp();
       if(result.type == ResultType.Barcode){  //if we got desired scan result instead of error
-        //print(result.rawContent);//used for debugging
-        setState(()=>this.barcode = result.rawContent); //sets scanned content to var
+        setState(()async{
+          this.barcode = result.rawContent;
+          this.tempResult=  temp;
+        }); //sets scanned content to var
       }
     }on PlatformException catch (e){  //Exception raised in try block on Platform interaction basis
       if(e.code == BarcodeScanner.cameraAccessDenied){  //is exception is camera Permission denial

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:qr_gen_rd/Screens/loading.dart';
+import 'package:qr_gen_rd/styles/loading.dart';
 import 'package:qr_gen_rd/services/database.dart';
 import 'package:qr_gen_rd/services/auth.dart';
 import 'package:qr_gen_rd/styles/style.dart';

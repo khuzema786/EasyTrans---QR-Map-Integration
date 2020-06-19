@@ -4,16 +4,14 @@ import 'package:qr_gen_rd/Screens/homescreen/home_screen.dart';
 import 'package:qr_gen_rd/Screens/authenticate/authenticate.dart';
 import 'package:qr_gen_rd/services/database.dart';
 
-/*Used to switch betwwen Authentication page and home screen
-  condition:- if user is signed in the goto home screen
-  implemented using a Provider package.. Provider looks for User obj stream.
-  If user obj return non-null value(sign in success) it redirects home-screen */
+/*USE --> Switch between Authentication and Home screen
+  CONDITION --> If user object returns a non-null value. i.e, sign in success, it redirects to Home-screen */
 
 class Wrapper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final user =
-        Provider.of<User>(context); //accessing user data from the stream
+        Provider.of<User>(context); // Accessing user data from the database stream
 
     if (user != null) {
       return HomeScreen(user);

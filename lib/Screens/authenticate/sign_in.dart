@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:qr_gen_rd/Screens/loading.dart';
+import 'package:qr_gen_rd/styles/loading.dart';
 import 'package:qr_gen_rd/services/auth.dart';
 import 'package:qr_gen_rd/styles/style.dart';
 
@@ -7,7 +7,7 @@ import 'package:qr_gen_rd/styles/style.dart';
 Describes implementation on how to Authenticate with FireBase Authentication Services*/
 
 class SignIn extends StatefulWidget {
-  final Function toggleFunction; //the function we recived as a parameter
+  final Function toggleFunction; //the function we received as a parameter
   SignIn(
       {this.toggleFunction}); //Constructor makes the parameter property of widget.. We passed the value to the Widget not to its state object
   //however this function can be used inside state object
@@ -17,12 +17,10 @@ class SignIn extends StatefulWidget {
 }
 
 class _SignInState extends State<SignIn> {
-  //this is the state object for Wiget
 
-  final AuthService _auth = AuthService(); //custom made AuthServices
-  final _formKey = GlobalKey<
-      FormState>(); //A global key of FormState..Use it to identify our form
-  bool loading = false; //whereever loading is true we will put a spinner
+  final AuthService _auth = AuthService(); // Custom made AuthServices
+  final _formKey = GlobalKey<FormState>(); // A global key of type FormState, Used to identify our form
+  bool loading = false; // When loading is true we'll put a spinner
 
   //text field state
   String email = '';
@@ -76,7 +74,7 @@ class _SignInState extends State<SignIn> {
                                     ? 'Enter Email'
                                     : null, //if value empty return helper text else return nothing
                                 //Validator takes a function and returns result to know if form is valid
-                                //our form is valid if there is somethin in there
+                                //our form is valid if there is something in there
                                 onChanged: (value) {
                                   setState(() {
                                     email = value;
@@ -129,8 +127,8 @@ class _SignInState extends State<SignIn> {
                                         setState(() {
                                           loading = false;
                                           error =
-                                              'Could Not Sign In with these Credentials :(';
-                                          //Now understand this... IF there is Sucessful Registeration we have a Stream Setup already
+                                              'Invalid Credentials :(';
+                                          //Now understand this... IF there is Successful Registration we have a Stream Setup already
                                           //to send user to HomeScreen
                                         });
                                       }
