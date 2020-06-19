@@ -153,10 +153,6 @@ class _MapState extends State<Map> {
                     ],
                   ),
                   child: TextField(
-//                    onTap: () async{
-//                      await appState.getLocationAutoComplete(context);
-//                      //await appState.sendRequest(appState.p.description);
-//                    },
                     cursorColor: Colors.black,
                     controller: appState.destinationController,
                     textInputAction: TextInputAction.go,

@@ -81,50 +81,17 @@ class HomeScreen extends StatelessWidget {
                               .collection('user_data')
                               .snapshots(),
                           builder: (context, snapshot) {
-                            List<DocumentSnapshot> dataList =
-                                snapshot.data.documents;
+                            List<DocumentSnapshot> dataList = snapshot.data.documents;
                             print("Here We Are!");
-                            getUserData(dataList, user);
+                            userDetails = DatabaseService().getUserData(dataList, user);
                             return Container();
-                          })),
+                          }
+                      )
+                  ),
                 ],
               ),
-            )));
+            )
+      )
+    );
   }
 }
-
-void getUserData(List<DocumentSnapshot> dataList, User user) {
-  /*This Funtion is used to create a string that enables us to generate a qr code*/
-  for (var i = 0; i < dataList.length; i++) {
-    if (dataList[i].documentID == user.uid) {
-      String _name = dataList[i].data['name'];
-      String _coronaHist = (dataList[i].data['CoronaHist'] ? 'Yes' : 'No');
-      userDetails = "name:$_name\ncorona_history:$_coronaHist";
-      print(userDetails);
-    }
-  }
-
-  //return Text(name);
-}
-
-/*Stream<DocumentSnapshot> provideDocumentFieldStream(User user) {
-    return Firestore.instance.collection('user_data').document(user.uid).snapshots();
-  }
-Widget getUserDataFromDatabase(User user){
-  StreamBuilder<DocumentSnapshot>(
-    stream: provideDocumentFieldStream(user),
-    builder: (context, AsyncSnapshot<DocumentSnapshot> snapshot){
-      if(snapshot.hasData){
-        //snapshot -> AsyncSnapshot of DocumentSnapshot
-        //snapshot.data -> DocumentSnapshot
-        //snapshot.data.data -> Map of fields that you need :)
-
-        Map<String,dynamic> documentFields = snapshot.data.documents[user.uid];
-        //TODO Okay, now you can use documentFields (json) as needed
-        print(documentFields['name']);
-
-        return (Text(documentFields['name']));
-      }
-    }
-  );
-}*/

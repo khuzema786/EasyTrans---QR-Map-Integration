@@ -45,10 +45,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return StreamProvider<User>.value(
       //it is listening to stream... keeping an eye if the USer obj changes its state
-      value: AuthService()
-          .user, //we are ccessing user stream from AuthService's instance(line 4 at auth.dart)
+      value: AuthService().user, //we are ccessing user stream from AuthService's instance(line 4 at auth.dart)
       child: MaterialApp(
-        debugShowCheckedModeBanner: false,
         title: 'EasyTrans',
         theme: ThemeData(
           primarySwatch: Colors.pink,

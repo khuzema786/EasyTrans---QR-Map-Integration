@@ -46,4 +46,16 @@ class DatabaseService{
       'HealthIssue'  : data.healthIssues,
     });
   }
+  String getUserData(List<DocumentSnapshot> dataList, User user) {
+    String userDetails;
+  /*This Funtion is used to create a string that enables us to generate a qr code*/
+  for (var i = 0; i < dataList.length; i++) {
+    if (dataList[i].documentID == user.uid) {
+      String _name = dataList[i].data['name'];
+      String _coronaHist = (dataList[i].data['CoronaHist'] ? 'Yes' : 'No');
+      userDetails = "name:$_name\ncorona_history:$_coronaHist";
+    }
+  }
+  return userDetails;
+}
 }
