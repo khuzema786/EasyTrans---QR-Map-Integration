@@ -8,6 +8,7 @@ import 'package:qr_gen_rd/services/database.dart';
 import 'package:qr_gen_rd/styles/style.dart';
 
 String userDetails = "";
+String name = '';
 
 class HomeScreen extends StatelessWidget {
   final AuthService _auth = AuthService();
@@ -69,11 +70,6 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.all(10),
-                    child: Text(user.uid),
-                    //child:DataList(),
-                  ),
-                  Padding(
                       padding: EdgeInsets.all(10),
                       child: StreamBuilder(
                           //This stream is used to fetch dataSnapShots from firestore cloud
@@ -82,11 +78,21 @@ class HomeScreen extends StatelessWidget {
                               .snapshots(),
                           builder: (context, snapshot) {
                             List<DocumentSnapshot> dataList = snapshot.data.documents;
-                            print("Here We Are!");
                             userDetails = DatabaseService().getUserData(dataList, user);
+                            name = userDetails.split('\n')[0].split(':')[1];
                             return Container();
                           }
                       )
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(10),
+                    child: Text('Name: $name',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 22,
+                    ),
+                    ),
+                    //child:DataList(),
                   ),
                 ],
               ),
