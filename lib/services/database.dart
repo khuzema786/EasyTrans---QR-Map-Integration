@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
 
 //Used to create a User Class and hold User data
 class User{
@@ -19,7 +20,6 @@ class UserPersonelData{
     this.email,
     this.name,
     this.dob,
-    //this.haddr,
     this.previousCoronaPos,
     this.healthIssues,
   }); 
@@ -28,6 +28,7 @@ class UserPersonelData{
 
 final Firestore _firestore  = Firestore.instance;
 final String  _collection = 'user_data';
+
 class DatabaseService{
 
   final String uid;
@@ -37,6 +38,11 @@ class DatabaseService{
 
 
   Future updateUserData(UserPersonelData data)async {
+    try{
+      await  _firestore.collection('userTypes').document(uid).setData({'Type': '0'});
+    }catch(e){
+      print('error:$e');
+    }
     return await _firestore.collection(_collection).document(uid).setData({
       'uid' : uid,
       'email': data.email,
@@ -46,6 +52,7 @@ class DatabaseService{
       'HealthIssue'  : data.healthIssues,
     });
   }
+
   String getUserData(List<DocumentSnapshot> dataList, User user) {
     String userDetails;
   /*This Funtion is used to create a string that enables us to generate a qr code*/
@@ -58,4 +65,13 @@ class DatabaseService{
   }
   return userDetails;
 }
+
+  int getUserType(List<DocumentSnapshot> dataList,User admin){
+    print('Inside getUserType');
+    for(var i=0;i<dataList.length;i++){
+      if(dataList[i].documentID == admin.uid){
+        print(dataList[i]);
+      }
+    }
+  }
 }

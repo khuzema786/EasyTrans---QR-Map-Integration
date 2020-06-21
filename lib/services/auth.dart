@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:qr_gen_rd/services/database.dart';
 
@@ -13,7 +14,7 @@ class AuthService{
 
   //create a user obj from FirebaseUser obj
   User _userFromFirebaseUser(FirebaseUser user){    //get us desired user properties
-    return  user!=null?User(uid: user.uid): null;
+    return user!=null?User(uid: user.uid): null;
   }
 
   //this below here creates a stream.. there by we can continously keep a lookout on User obj for changes
@@ -59,6 +60,20 @@ class AuthService{
 
       //create a new document for the user with the uid
       await DatabaseService(uid: user.uid).updateUserData(data);
+      return _userFromFirebaseUser(user);
+    }catch(e){
+      print(e.toString());
+      return null;
+    }
+  }
+
+  Future registerAdmin(String email,String password) async {
+    try{
+      AuthResult result = await _auth.createUserWithEmailAndPassword(email: email, password: password); //using builtIn Method
+      FirebaseUser user = result.user;
+      await Firestore.instance.collection('userTypes').document(user.uid).setData({'Type': 1});
+      //create a new document for the user with the uid
+      //await DatabaseService(uid: user.uid).updateUserData(data);
       return _userFromFirebaseUser(user);
     }catch(e){
       print(e.toString());
