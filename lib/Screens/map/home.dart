@@ -1,3 +1,4 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:qr_gen_rd/states/app_state.dart'; //AppState Management
 import 'package:qr_gen_rd/styles/style.dart'; //Stylesheet
 import 'package:qr_gen_rd/Screens/payments/payment.dart';
@@ -52,14 +53,14 @@ class _MapState extends State<Map> {
                 ],
               ),
               SizedBox(
-                height: 10,
+                height: 20,
               ),
               Visibility(
                 visible: appState.locationServiceActive == false,
                 // If app is unable to load initial position
-                child: Text(
-                  "Please enable location services!",
-                  style: TextStyle(color: Colors.grey, fontSize: 18),
+                child: TypewriterAnimatedTextKit(
+                  text: ["Please enable location services"],
+                  textStyle: TextStyle(color: Colors.grey, fontSize: 18),
                 ),
               )
             ],
@@ -89,7 +90,7 @@ class _MapState extends State<Map> {
               ),
               Positioned(
                 // Textfield For Source
-                top: 50.0,
+                top: 65.0,
                 right: 15.0,
                 left: 15.0,
                 child: Container(
@@ -101,7 +102,7 @@ class _MapState extends State<Map> {
                     boxShadow: [
                       BoxShadow(
                           color: Colors.grey,
-                          offset: Offset(1.0, 5.0),
+                          offset: Offset(1.0, 3.0),
                           blurRadius: 10,
                           spreadRadius: 3)
                     ],
@@ -121,7 +122,7 @@ class _MapState extends State<Map> {
                         height: 10,
                         child: Icon(
                           Icons.location_on,
-                          color: pink,
+                          color: Colors.blue,
                         ),
                       ),
                       hintText: "Enter The Source...",
@@ -133,7 +134,7 @@ class _MapState extends State<Map> {
               ),
               Positioned(
                 // Textfield for destination
-                top: 110.0,
+                top: 125.0,
                 right: 15.0,
                 left: 15.0,
                 child: Container(
@@ -145,7 +146,7 @@ class _MapState extends State<Map> {
                     boxShadow: [
                       BoxShadow(
                           color: Colors.grey,
-                          offset: Offset(1.0, 5.0),
+                          offset: Offset(1.0, 3.0),
                           blurRadius: 10,
                           spreadRadius: 3)
                     ],
@@ -169,7 +170,7 @@ class _MapState extends State<Map> {
                         height: 10,
                         child: Icon(
                           Icons.directions_bus,
-                          color: pink,
+                          color: Colors.blue,
                         ),
                       ),
                       hintText: "Enter The Destination...",
@@ -179,18 +180,39 @@ class _MapState extends State<Map> {
                   ),
                 ),
               ),
-              RaisedButton(
-                color: pink,
-                textColor: Colors.white,
-                splashColor: Colors.pink,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(18.0),
+              Positioned(
+                bottom: 18,
+                right: 65,
+                child: Container(
+                  width: 60,
+                  height: 60,
+                  child: FittedBox(
+                    child: FloatingActionButton(
+                      hoverElevation: 5,
+                      elevation: 3,
+                      backgroundColor: Colors.blue.withOpacity(0.9),
+                      splashColor: Colors.deepOrange,
+                      onPressed: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => Payments()));
+                      },
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: <Widget>[
+                          Icon(Icons.payment,color: Colors.white,),
+                          Text(
+                            "BOOK",
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
                 ),
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Payments()));
-                },
-                child: const Text('Book Now'),
               ),
             ],
           );

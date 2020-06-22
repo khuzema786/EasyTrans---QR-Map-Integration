@@ -4,8 +4,12 @@ import 'dart:async';
 import 'package:barcode_scan/barcode_scan.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:qr_gen_rd/styles/clip_path.dart';
+import 'package:qr_gen_rd/styles/navbar.dart';
 import 'package:qr_gen_rd/styles/style.dart';
 import 'package:qr_gen_rd/Screens/requests/iot_temp.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class ScanScreen extends StatefulWidget{
   @override
@@ -19,36 +23,75 @@ class _ScanState extends State<ScanScreen>{
   @override
   Widget build(BuildContext context){
     return Scaffold(
-      appBar: AppBar(
-        title: Text('QR Code Scanner'),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,     // Center vertically
-          crossAxisAlignment: CrossAxisAlignment.stretch, // Stretched horizontally
-          children: <Widget>[
-            Padding(
-              padding: EdgeInsets.all(17),
-              child:RaisedButton(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(18.0),
+      bottomNavigationBar: BottomNavBar(navIcon: 4,),
+      body: SingleChildScrollView(
+        child: Center(
+          child: Column(
+            children: <Widget>[
+              ClipPath(
+                clipper: MyClipper(),
+                child: Container(
+                  decoration: BoxDecoration(
+                    gradient:LinearGradient(
+                      begin: Alignment.topRight,
+                      end: Alignment.bottomLeft,
+                      colors: [
+                        Colors.lightBlueAccent,
+                        Colors.blue,
+                      ],
+                    ),
+                  ),
+                  width: double.infinity,
+                  height: 280,
+                  child: Stack(alignment: Alignment.center, children: <Widget>[
+                    Text(
+                      "Click Me !",
+                      textAlign: TextAlign.center,
+                      style: GoogleFonts.lobster(
+                        textStyle: TextStyle(
+                          color: Colors.white,
+                          fontSize: 50.0,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                    ),
+                  ]),
                 ),
-                color: pink,
-                textColor: Colors.white,
-                splashColor: Colors.deepOrange,
-                onPressed:scan,
-                child: const Text('START SCAN'),
               ),
-            ),
-            Padding(padding: EdgeInsets.all(15),
-            child:Column(
-              children: <Widget>[
-                Text(barcode,textAlign: TextAlign.center,),
-                Text(tempResult,textAlign: TextAlign.center,),
-              ],
-            ), //output text....displayed after scan is done
-            ),
-          ],
+              Container(
+                height: 0.4 *
+                    (MediaQuery.of(context).size.height -
+                        MediaQuery.of(context).viewInsets.bottom),
+                width: 0.4 *
+                    (MediaQuery.of(context).size.height -
+                        MediaQuery.of(context).viewInsets.bottom),
+                child: FittedBox(
+                  child: FloatingActionButton(
+                    hoverElevation: 5,
+                    elevation: 3,
+                    backgroundColor: Colors.blue,
+                    onPressed: () {
+                      scan();
+                    },
+                    child: Center(child: Icon(MdiIcons.qrcodeScan,color: Colors.white,)),
+                  ),
+                ),
+              ),
+              Padding(padding: EdgeInsets.all(15),
+              child:Card(
+                color: Colors.pinkAccent,
+                elevation: 3,
+                child: Column(
+                  children: <Widget>[
+                    Text(barcode,textAlign: TextAlign.center,style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500),),
+                    SizedBox(height: 5,),
+                    Text(tempResult,textAlign: TextAlign.center,style: TextStyle(color: Colors.white,fontWeight: FontWeight.w700),),
+                  ],
+                ),
+              ), //output text....displayed after scan is done
+              ),
+            ],
+          ),
         ),
       )
     );

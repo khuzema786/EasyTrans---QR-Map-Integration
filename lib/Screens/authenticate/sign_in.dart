@@ -1,7 +1,11 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:qr_gen_rd/styles/loading.dart';
 import 'package:qr_gen_rd/services/auth.dart';
 import 'package:qr_gen_rd/styles/style.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:qr_gen_rd/styles/clip_path.dart';
 
 /* Contains SignIn function
 Describes implementation on how to Authenticate with FireBase Authentication Services*/
@@ -17,9 +21,9 @@ class SignIn extends StatefulWidget {
 }
 
 class _SignInState extends State<SignIn> {
-
   final AuthService _auth = AuthService(); // Custom made AuthServices
-  final _formKey = GlobalKey<FormState>(); // A global key of type FormState, Used to identify our form
+  final _formKey = GlobalKey<
+      FormState>(); // A global key of type FormState, Used to identify our form
   bool loading = false; // When loading is true we'll put a spinner
 
   //text field state
@@ -32,31 +36,78 @@ class _SignInState extends State<SignIn> {
     return loading
         ? Loading()
         : Scaffold(
-            appBar: AppBar(
-              elevation: 0.5,
-              title: Text('Sign In for Bus Services'),
-              actions: <Widget>[
-                // This Here Shows Register Option on SignIn screen
-                FlatButton.icon(
-                    onPressed: () {
-                      widget.toggleFunction();
-                    },
-                    icon: Icon(Icons.person),
-                    label: Text("Register"))
-              ],
-            ),
             body: SafeArea(
                 child: SingleChildScrollView(
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Form(
-                            key: _formKey,
-                            child: Column(children: <Widget>[
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                ClipPath(
+                  clipper: MyClipper(),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      gradient:LinearGradient(
+                        begin: Alignment.topRight,
+                        end: Alignment.bottomLeft,
+                        colors: [
+                          Colors.lightBlueAccent,
+                          Colors.blue,
+                        ],
+                      ),
+                    ),
+                    width: double.infinity,
+                    height: 280,
+                    child: Stack(alignment: Alignment.center, children: <Widget>[
+                      Positioned(
+                          top: 10,
+                          right: 10,
+                          child: FlatButton.icon(
+                            onPressed: () {
+                              widget.toggleFunction();
+                            },
+                            icon: Icon(
+                              Icons.person,
+                              color: white,
+                            ),
+                            label: Text(
+                              "Register",
+                              style: TextStyle(color: white),
+                            ),
+                          )),
+                      Text(
+                        "Login",
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.lobster(
+                          textStyle: TextStyle(
+                            color: Colors.white,
+                            fontSize: 50.0,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                      ),
+                    ]),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 15,horizontal: 15),
+                  child: Center(
+                    child: Form(
+                        key: _formKey,
+                        child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: <Widget>[
+                              //SvgPicture.asset("images/colorLogo.svg"),
+                              Text(
+                                error,
+                                style: TextStyle(
+                                  color: Colors.redAccent,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w200,
+                                ),
+                              ),
                               SizedBox(
-                                height: 20,
+                                height: 10,
                               ),
                               TextFormField(
                                 keyboardType: TextInputType.emailAddress,
@@ -69,7 +120,7 @@ class _SignInState extends State<SignIn> {
                                             color: Colors.white, width: 2.0)),
                                     focusedBorder: OutlineInputBorder(
                                         borderSide: BorderSide(
-                                            color: pink, width: 2.0))),
+                                            color: Colors.blue, width: 2.0))),
                                 validator: (value) => value.isEmpty
                                     ? 'Enter Email'
                                     : null, //if value empty return helper text else return nothing
@@ -82,7 +133,7 @@ class _SignInState extends State<SignIn> {
                                 },
                               ),
                               SizedBox(
-                                height: 20,
+                                height: 15,
                               ),
                               TextFormField(
                                 decoration: InputDecoration(
@@ -94,7 +145,7 @@ class _SignInState extends State<SignIn> {
                                             color: Colors.white, width: 2.0)),
                                     focusedBorder: OutlineInputBorder(
                                         borderSide: BorderSide(
-                                            color: Colors.pink, width: 2.0))),
+                                            color: Colors.blue, width: 2.0))),
                                 validator: (value) => value.length < 6
                                     ? 'Enter Atleast 6 Charaters'
                                     : null,
@@ -109,39 +160,48 @@ class _SignInState extends State<SignIn> {
                                 height: 20,
                               ),
                               RaisedButton(
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(18.0),
-                                  ),
-                                  color: pink,
-                                  textColor: Colors.white,
-                                  splashColor: Colors.deepOrange,
-                                  child: Text("Sign-In"),
-                                  onPressed: () async {
-                                    if (_formKey.currentState.validate()) {
-                                      //condition:- is our form valid?
-                                      //this validate() method uses validator properties of form
-                                      setState(() => loading = true);
-                                      dynamic result = await _auth
-                                          .signinWithEmailAndPassword(email, password);
-                                      if (result == null) {
-                                        setState(() {
-                                          loading = false;
-                                          error =
-                                              'Invalid Credentials :(';
-                                          //Now understand this... IF there is Successful Registration we have a Stream Setup already
-                                          //to send user to HomeScreen
-                                        });
-                                      }
+                                hoverElevation: 5,
+                                elevation: 2,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(18.0),
+                                ),
+                                color: Colors.blue,
+                                textColor: Colors.white,
+                                onPressed: () async {
+                                  if (_formKey.currentState.validate()) {
+                                    //condition:- is our form valid?
+                                    //this validate() method uses validator properties of form
+                                    setState(() => loading = true);
+                                    dynamic result =
+                                        await _auth.signinWithEmailAndPassword(
+                                            email, password);
+                                    if (result == null) {
+                                      setState(() {
+                                        loading = false;
+                                        error = 'Invalid Credentials';
+                                        //Now understand this... IF there is Successful Registration we have a Stream Setup already
+                                        //to send user to HomeScreen
+                                      });
                                     }
-                                  }),
-                              Text(
-                                error,
-                                style: TextStyle(color: Colors.red),
-                              ),
+                                  }
+                                },
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 15, vertical: 10),
+                                  child: Text(
+                                    "Login",
+                                    style: TextStyle(
+                                      fontSize: 18,
+                                    ),
+                                  ),
+                                ),
+                              )
                             ])),
-                      ],
-                    ),
                   ),
-                )));
+                ),
+              ],
+            ),
+          )));
   }
 }
+

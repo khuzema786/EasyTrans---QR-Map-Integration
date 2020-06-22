@@ -136,9 +136,9 @@ class AppState with ChangeNotifier {
     _polyLines.clear();
     _polyLines.add(Polyline(
         polylineId: PolylineId(_lastPosition.toString()),
-        width: 10,
+        width: 3,
         points: results,
-        color: pink));
+        color: Colors.blue));
     notifyListeners();
   }
 }

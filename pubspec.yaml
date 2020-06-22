@@ -43,18 +43,40 @@ dependencies:
   google_maps_webservice: ^0.0.14
   shared_preferences: ^0.5.3+4
   permission_handler: ^5.0.1
-  #https://pub.dev/packages/flutter_spinkit
+  razorpay_flutter: ^1.2.1
+  toast: ^0.1.5
+  flutter_svg: ^0.17.1
+  awesome_package: ^0.0.1
+  animated_text_kit: ^2.2.0
+  material_design_icons_flutter: ^2.7.94
+  google_fonts: ^1.1.0
+  flare_flutter: any
+  curved_navigation_bar: ^0.3.3
+
   #----------------------------------------------------------------------
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_launcher_icons: ^0.7.5
+
+flutter_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path_android: "images/appIcon.png"
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
 # The following section is specific to Flutter.
 flutter:
+  #fonts:
+   # - family: Raleway
+    #  fonts:
+     #   - asset: packages/awesome_package/fonts/Raleway-Regular.ttf
+      #  - asset: packages/awesome_package/fonts/Raleway-Italic.ttf
+       #   style: italic
+  # https://flutter.dev/docs/cookbook/design/package-fonts
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
@@ -62,8 +84,10 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
+  assets:
+    - images/Icon.svg
+    - images/colorLogo.svg
+    - images/vector.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
