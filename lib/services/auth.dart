@@ -8,7 +8,7 @@ Functions:
   signInAnon :- Sign in as anonymous
   signOut :- Sign Out account*/
 
-String _uid;
+//String _uid;
 
 
 class AuthService{
@@ -35,7 +35,7 @@ class AuthService{
       AuthResult result = await _auth.signInAnonymously();    //signing in anon...await because we need to wait for returned value
       //in this result object we have a Firebase User object
       FirebaseUser user = result.user;
-      _uid = user.uid;
+      //_uid = user.uid;
       User _user = _userFromFirebaseUser(user); 
       return _user;
     }catch(e){
@@ -49,8 +49,10 @@ class AuthService{
     try{
       AuthResult result = await _auth.signInWithEmailAndPassword(email: email, password: password);
       FirebaseUser user = result.user;
-      _uid = user.uid;
-      getType();
+      /*_uid = user.uid;
+      print(_uid);
+      type = await getType();*/
+      Future.delayed(const Duration(seconds: 5));
       return _userFromFirebaseUser(user);
     }catch(e){
       print(e.toString());
@@ -63,10 +65,10 @@ class AuthService{
     try{
       AuthResult result = await _auth.createUserWithEmailAndPassword(email: email, password: password); //using builtIn Method
       FirebaseUser user = result.user;
-      _uid = user.uid;
+      //_uid = user.uid;//Remove if success later
       //create a new document for the user with the uid
       await DatabaseService(uid: user.uid).updateUserData(data);
-      await Firestore.instance.collection('userTypes').document(user.uid).setData({'Type': 1});
+      await Firestore.instance.collection('userTypes').document(user.uid).setData({'Type': 1});//remove if success later
       return _userFromFirebaseUser(user);
     }catch(e){
       print(e.toString());
@@ -79,7 +81,7 @@ class AuthService{
       AuthResult result = await _auth.createUserWithEmailAndPassword(email: email, password: password); //using builtIn Method
       FirebaseUser user = result.user;
       await Firestore.instance.collection('userTypes').document(user.uid).setData({'Type': 1});
-      _uid = user.uid;
+      //_uid = user.uid;
       //create a new document for the user with the uid
       //await DatabaseService(uid: user.uid).updateUserData(data);
       return _userFromFirebaseUser(user);
@@ -100,17 +102,25 @@ class AuthService{
   }
 }
 
-void getType(){
-  StreamBuilder(
-    stream: Firestore.instance.collection('user_data').snapshots(),
+/*Future getType() async {
+  print("In Here!");
+  int res = 0;
+  /*StreamBuilder(
+    stream: Firestore.instance.collection('userTypes').snapshots(),
     builder: (context, snapshot) {
       List<DocumentSnapshot> dataList = snapshot.data.documents;
       for (var i = 0; i < dataList.length; i++) {
+        print("[DEBUG] $dataList[i]");
       if (dataList[i].documentID == _uid) {
-        type = dataList[i].data['type'];
-        print(type);
+        res = dataList[i].data['Type'];
+        print(res);
+        return Container();
       }
     }
   }
-  );
-}
+  );*/
+  List<int> dataList;
+  QuerySnapshot querySnapshot = await Firestore.instance.collection('userTypes').getDocuments();
+  querySnapshot.documents.forEach((element) { if(element['ID'] == _uid){print('[DEBUG]');}});
+  return res;
+}*/

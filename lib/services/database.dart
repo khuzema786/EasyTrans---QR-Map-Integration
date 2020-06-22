@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-int type;
+//int type = null;
+String userDetails = '';
 
 //Used to create a User Class and hold User data
 class User{
@@ -45,8 +46,11 @@ class DatabaseService{
       'DOB'  : data.dob,
       'CoronaHist'  : data.previousCoronaPos,
       'HealthIssue'  : data.healthIssues,
+      //'Type' : 0,
     });
   }
+
+  Future updateAdminData()async{}
 
   String getUserData(List<DocumentSnapshot> dataList, User user) {
     String userDetails;
@@ -56,6 +60,8 @@ class DatabaseService{
       String _name = dataList[i].data['name'];
       String _coronaHist = (dataList[i].data['CoronaHist'] ? 'Yes' : 'No');
       userDetails = "name:$_name\ncorona_history:$_coronaHist";
+      type = dataList[i].data['Type'];
+      print(type);
     }
   }
   return userDetails;

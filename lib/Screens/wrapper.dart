@@ -1,8 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:qr_gen_rd/Screens/homescreen/home_screen.dart';
 import 'package:qr_gen_rd/Screens/authenticate/authenticate.dart';
 import 'package:qr_gen_rd/services/database.dart';
+import 'package:qr_gen_rd/Screens/loading.dart';
 /*Used to switch betwwen Authentication page and home screen
   condition:- if user is signed in the goto home screen
   implemented using a Provider package.. Provider looks for User obj stream.
@@ -12,13 +14,12 @@ class Wrapper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<User>(context); //accessing user data from the stream
+    //final type = Provider.of<int>(context);
+
+
 
     if (user != null) {
-      if(type == 0){
-        return HomeScreen(user);
-      }else{
-        return AdminScreen();
-      }
+      return HomeScreen(user);
     } else {
       return Authenticate();
     }

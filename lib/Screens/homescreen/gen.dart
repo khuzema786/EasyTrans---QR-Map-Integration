@@ -7,9 +7,9 @@ All the commented codes didnt not affect anything during runtime and will be rem
 
 import 'package:flutter/material.dart';
 import 'package:qr_flutter/qr_flutter.dart';
-import 'package:qr_gen_rd/Screens/homescreen/home_screen.dart';
 import 'package:qr_gen_rd/Screens/map/home.dart';
 import 'package:qr_gen_rd/styles/style.dart';
+import 'package:qr_gen_rd/services/database.dart';
 
 
 class GenerateScreen extends StatefulWidget{

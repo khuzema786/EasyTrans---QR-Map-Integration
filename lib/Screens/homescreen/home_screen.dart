@@ -7,7 +7,6 @@ import 'package:qr_gen_rd/services/auth.dart';
 import 'package:qr_gen_rd/services/database.dart';
 import 'package:qr_gen_rd/styles/style.dart';
 
-String userDetails = "";
 String name = 'Name';
 
 class HomeScreen extends StatelessWidget {
@@ -82,7 +81,7 @@ class HomeScreen extends StatelessWidget {
                           }
                       )
                   ),
-                  Padding(
+                  /*Padding(
                     padding: EdgeInsets.all(10),
                     child: Text('Name: $name',
                     style: TextStyle(
@@ -91,7 +90,7 @@ class HomeScreen extends StatelessWidget {
                     ),
                     ),
                     //child:DataList(),
-                  ),
+                  ),*/
                 ],
               ),
             )
@@ -106,8 +105,18 @@ class HomeScreen extends StatelessWidget {
 class AdminScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Text('Finally!'),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Welcome Back Admin!'),
+        actions: <Widget>[
+          FlatButton.icon(onPressed: () async {
+            await AuthService().signout();
+          }, 
+           icon: Icon(Icons.person),
+           label: Text("Logout"), 
+          )
+        ]
+      ),
     );
   }
 }

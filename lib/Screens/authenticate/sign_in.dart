@@ -141,8 +141,7 @@ class _SignInState extends State<SignIn> {
                                       //condition:- is our form valid?
                                       //this validate() method uses validator properties of form
                                       setState(() => loading = true);
-                                      dynamic result = await _auth
-                                          .signinWithEmailAndPassword(email, password);
+                                      dynamic result = await _auth.signinWithEmailAndPassword(email, password);
                                       if (result == null) {
                                         setState(() {
                                           loading = false;
@@ -158,7 +157,9 @@ class _SignInState extends State<SignIn> {
                                 error,
                                 style: TextStyle(color: Colors.red),
                               ),
-                            ])),
+                            ]
+                            )
+                        ),
                       ],
                     ),
                   ),
