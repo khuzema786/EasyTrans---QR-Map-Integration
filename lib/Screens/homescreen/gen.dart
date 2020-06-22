@@ -21,49 +21,51 @@ class GenerateScreenState extends State<GenerateScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         bottomNavigationBar: BottomNavBar(navIcon: 3,),
-        body: SingleChildScrollView(
-          child: Center(
-            child: Column(
-              children: <Widget>[
-                ClipPath(
-                  clipper: MyClipper(),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      gradient:LinearGradient(
-                        begin: Alignment.topRight,
-                        end: Alignment.bottomLeft,
-                        colors: [
-                          Colors.lightBlueAccent,
-                          Colors.blue,
-                        ],
-                      ),
-                    ),
-                    width: double.infinity,
-                    height: 280,
-                    child: Stack(alignment: Alignment.center, children: <Widget>[
-                      Text(
-                        "Scan The Code",
-                        textAlign: TextAlign.center,
-                        style: GoogleFonts.lobster(
-                          textStyle: TextStyle(
-                            color: Colors.white,
-                            fontSize: 50.0,
-                            fontWeight: FontWeight.w400,
-                          ),
+        body: SafeArea(
+          child: SingleChildScrollView(
+            child: Center(
+              child: Column(
+                children: <Widget>[
+                  ClipPath(
+                    clipper: MyClipper(),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        gradient:LinearGradient(
+                          begin: Alignment.topRight,
+                          end: Alignment.bottomLeft,
+                          colors: [
+                            Colors.lightBlueAccent,
+                            Colors.blue,
+                          ],
                         ),
                       ),
-                    ]),
+                      width: double.infinity,
+                      height: 250,
+                      child: Stack(alignment: Alignment.center, children: <Widget>[
+                        Text(
+                          "Scan The Code",
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.lobster(
+                            textStyle: TextStyle(
+                              color: Colors.white,
+                              fontSize: 50.0,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                        ),
+                      ]),
+                    ),
                   ),
-                ),
-                QrImage(
-                  foregroundColor: Colors.blue,
-                  data: userDetails,
-                  size: 0.4 *
-                      (MediaQuery.of(context).size.height -
-                          MediaQuery.of(context).viewInsets.bottom),
-                  //MediaQuery is used to learn the size of current screen on which app is being used
-                ),
-              ],
+                  QrImage(
+                    foregroundColor: Colors.blue,
+                    data: userDetails,
+                    size: 0.35 *
+                        (MediaQuery.of(context).size.height -
+                            MediaQuery.of(context).viewInsets.bottom),
+                    //MediaQuery is used to learn the size of current screen on which app is being used
+                  ),
+                ],
+              ),
             ),
           ),
         ));

@@ -1,6 +1,5 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:qr_gen_rd/states/app_state.dart'; //AppState Management
-import 'package:qr_gen_rd/styles/style.dart'; //Stylesheet
 import 'package:qr_gen_rd/Screens/payments/payment.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';

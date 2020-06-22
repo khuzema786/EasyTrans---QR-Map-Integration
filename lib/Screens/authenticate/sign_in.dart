@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:qr_gen_rd/styles/loading.dart';
 import 'package:qr_gen_rd/services/auth.dart';
 import 'package:qr_gen_rd/styles/style.dart';

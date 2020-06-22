@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:qr_gen_rd/Screens/homescreen/gen.dart';
+import 'package:qr_gen_rd/Screens/homescreen/guide.dart';
+import 'package:qr_gen_rd/Screens/homescreen/history.dart';
 import 'package:qr_gen_rd/Screens/homescreen/scan.dart';
-import 'package:qr_gen_rd/Screens/homescreen/try.dart';
 import 'package:qr_gen_rd/Screens/wrapper.dart';
 
 void main() => runApp(MaterialApp(home: BottomNavBar()));
@@ -46,12 +47,18 @@ class _BottomNavBarState extends State<BottomNavBar> {
                     MaterialPageRoute(
                         builder: (context) => Wrapper()));
               }
-//              if(index==1){
-//                Wrapper();
-//              }
-//              if(index==2){
-//                Wrapper();
-//              }
+              if(index==1){
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => History()));
+              }
+              if(index==2){
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => GuideScreen()));
+              }
               if(index==3){
                 Navigator.push(
                     context,
