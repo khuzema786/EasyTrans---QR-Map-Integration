@@ -17,6 +17,7 @@ class _AuthenticateState extends State<Authenticate> {
     setState(() => showSignIn = !showSignIn);   //Reversing the current state of showSignIn 
   }
 
+
   @override
   Widget build(BuildContext context) {
     if(showSignIn){

@@ -110,6 +110,24 @@ class _SignInState extends State<SignIn> {
                               SizedBox(
                                 height: 20,
                               ),
+                              /*Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: <Widget>[
+                                  Radio(value: 0,
+                                  groupValue: -1, 
+                                  onChanged: (groupValue){
+                                    type = 0;
+                                    print(type);
+                                  }
+                                  ),
+                                  Text('User'),
+                                  Radio(value: 1, groupValue: -1, onChanged: null),
+                                  Text('Admin'),
+                                ],
+                              ),
+                              SizedBox(
+                                height: 20,
+                              ),*/
                               RaisedButton(
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(18.0),

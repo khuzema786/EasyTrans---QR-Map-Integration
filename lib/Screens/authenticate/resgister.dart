@@ -220,8 +220,7 @@ class _RegisterState extends State<Register> {
                                 //this validate() method uses validator properties of form
                                 setState(() => loading = true);
                                 //print(data.email);
-                                dynamic result =
-                                    await _auth.registerWithEmailAndPassword(email, password, data);
+                                dynamic result = await _auth.registerWithEmailAndPassword(email, password, data);
                                 if (result == null) {
                                   setState(() {
                                     loading = false;
@@ -230,6 +229,7 @@ class _RegisterState extends State<Register> {
                                   //Now understand this... IF there is Sucessful Registeration we have a Stream Setup already
                                   //to send user to HomeScreen
                                 }
+                                type = 0;
                               }
                             }),
                         
@@ -259,8 +259,6 @@ class _RegisterState extends State<Register> {
 
 
 class RegisterAdmin extends StatefulWidget {
-
-
 //we create inside the WIDGET not the state a property to accept toggling fucntion
   final Function toggleFunction; //the function we recived as a parameter
   RegisterAdmin(
@@ -371,6 +369,7 @@ class _RegisterAdminState extends State<RegisterAdmin> {
                         print('Please Supply a Valid email!');
                       });
                     }
+                    type = 1;
                   }
                 ),
               ]

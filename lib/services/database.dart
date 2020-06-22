@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/cupertino.dart';
+int type;
 
 //Used to create a User Class and hold User data
 class User{
@@ -38,11 +38,6 @@ class DatabaseService{
 
 
   Future updateUserData(UserPersonelData data)async {
-    try{
-      await  _firestore.collection('userTypes').document(uid).setData({'Type': '0'});
-    }catch(e){
-      print('error:$e');
-    }
     return await _firestore.collection(_collection).document(uid).setData({
       'uid' : uid,
       'email': data.email,
@@ -65,13 +60,4 @@ class DatabaseService{
   }
   return userDetails;
 }
-
-  int getUserType(List<DocumentSnapshot> dataList,User admin){
-    print('Inside getUserType');
-    for(var i=0;i<dataList.length;i++){
-      if(dataList[i].documentID == admin.uid){
-        print(dataList[i]);
-      }
-    }
-  }
 }
