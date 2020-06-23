@@ -123,14 +123,17 @@ class _HistoryState extends State<History> {
                             ),
                             height:65,
                             width: 190,
-                      /*    child: Column(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: <Widget>[
                                 Row(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: <Widget>[
                                     Icon(
-                                        Icons.my_location
+                                        Icons.my_location,
+                                      color: Colors.white,
                                     ),
                                     SizedBox(
                                       width: 10,
@@ -146,13 +149,15 @@ class _HistoryState extends State<History> {
                                   ],
                                 ),
                                 SizedBox(
-                                  height: 5,
+                                  height: 6,
                                 ),
                                 Row(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: <Widget>[
                                     Icon(
-                                        Icons.location_on
+                                        Icons.location_on,
+                                      color: Colors.white,
                                     ),
                                     SizedBox(
                                       width: 10,
@@ -168,7 +173,7 @@ class _HistoryState extends State<History> {
                                   ],
                                 ),
                               ],
-                            ), */
+                            ),
                           ),
                         ),
                       ),
