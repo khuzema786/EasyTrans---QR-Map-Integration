@@ -4,6 +4,7 @@ Uses qr_flutter package
 
 All the commented codes didnt not affect anything during runtime and will be removed after proper testing*/
 
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:qr_gen_rd/Screens/homescreen/home_screen.dart';
@@ -25,11 +26,15 @@ class GenerateScreenState extends State<GenerateScreen> {
           child: SingleChildScrollView(
             child: Center(
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   ClipPath(
                     clipper: MyClipper(),
                     child: Container(
                       decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: AssetImage("images/qr.png"),
+                        ),
                         gradient:LinearGradient(
                           begin: Alignment.topRight,
                           end: Alignment.bottomLeft,
@@ -41,16 +46,25 @@ class GenerateScreenState extends State<GenerateScreen> {
                       ),
                       width: double.infinity,
                       height: 250,
-                      child: Stack(alignment: Alignment.center, children: <Widget>[
-                        Text(
-                          "Scan The Code",
-                          textAlign: TextAlign.center,
-                          style: GoogleFonts.lobster(
-                            textStyle: TextStyle(
-                              color: Colors.white,
-                              fontSize: 50.0,
-                              fontWeight: FontWeight.w400,
-                            ),
+                      child: Stack(alignment: Alignment.centerLeft, children: <Widget>[
+                        Positioned(
+                          left: 23,
+                          top: 23,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: <Widget>[
+                              TypewriterAnimatedTextKit(
+                                text: ['Scan Your Code'],
+                                repeatForever: true,
+                                textAlign: TextAlign.center,
+                                textStyle: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 16.0,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                       ]),

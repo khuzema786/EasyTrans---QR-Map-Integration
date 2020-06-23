@@ -42,31 +42,31 @@ class _BottomNavBarState extends State<BottomNavBar> {
           onTap: (index) {
             setState(() {
               if(index==0){
-                Navigator.push(
+                Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(
                         builder: (context) => Wrapper()));
               }
               if(index==1){
-                Navigator.push(
+                Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(
                         builder: (context) => History()));
               }
               if(index==2){
-                Navigator.push(
+                Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(
                         builder: (context) => GuideScreen()));
               }
               if(index==3){
-                Navigator.push(
+                Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(
                         builder: (context) => GenerateScreen()));
               }
               if(index==4){
-                Navigator.push(
+                Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(
                         builder: (context) => ScanScreen()));

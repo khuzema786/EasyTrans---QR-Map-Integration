@@ -1,6 +1,7 @@
 // QR SCANNER -- BARCODE SCAN PACKAGE
 
 import 'dart:async';
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:barcode_scan/barcode_scan.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -31,11 +32,15 @@ class _ScanState extends State<ScanScreen> {
           child: SingleChildScrollView(
             child: Center(
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   ClipPath(
                     clipper: MyClipper(),
                     child: Container(
                       decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: AssetImage("images/scan.png"),
+                        ),
                         gradient: LinearGradient(
                           begin: Alignment.topRight,
                           end: Alignment.bottomLeft,
@@ -47,20 +52,28 @@ class _ScanState extends State<ScanScreen> {
                       ),
                       width: double.infinity,
                       height: 250,
-                      child:
-                          Stack(alignment: Alignment.center, children: <Widget>[
-                        Text(
-                          "Click Me !",
-                          textAlign: TextAlign.center,
-                          style: GoogleFonts.lobster(
-                            textStyle: TextStyle(
-                              color: Colors.white,
-                              fontSize: 50.0,
-                              fontWeight: FontWeight.w400,
+                      child: Stack(alignment: Alignment.centerLeft, children: <Widget>[
+                      Positioned(
+                        left: 23,
+                        top: 23,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: <Widget>[
+                            TypewriterAnimatedTextKit(
+                              text: ['Click The Button'],
+                              repeatForever: true,
+                              textAlign: TextAlign.center,
+                              textStyle: TextStyle(
+                                color: Colors.white,
+                                fontSize: 16.0,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
-                          ),
+                          ],
                         ),
-                      ]),
+                      ),
+                    ]),
                     ),
                   ),
                   SpringScale(
@@ -104,8 +117,8 @@ class _ScanState extends State<ScanScreen> {
                               BoxShadow(
                                   color: Colors.grey,
                                   offset: Offset(1.0, 2.0),
-                                  blurRadius: 5,
-                                  spreadRadius: 0.3)
+                                  blurRadius: 3,
+                                  spreadRadius: 0.2)
                             ],
                             borderRadius: BorderRadius.circular(18),
                             color: Colors.blue,

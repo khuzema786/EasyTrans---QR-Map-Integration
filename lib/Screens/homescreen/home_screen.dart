@@ -92,40 +92,46 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
             ),
             Padding(
-          padding: const EdgeInsets.all(15.0),
+          padding: const EdgeInsets.only(left: 15,right: 15,bottom: 15),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-            /*  AvatarGlow(
-                glowColor: Colors.blue,
-                endRadius: 90.0,
-                duration: Duration(milliseconds: 2000),
-                repeat: true,
-                showTwoGlows: true,
-                repeatPauseDuration: Duration(milliseconds: 100),
-                child: GestureDetector(
-                  onTap: (){
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => MyHomePage()));
-                  },
-                  child: Material(
-                    elevation: 8.0,
-                    shape: CircleBorder(),
-                    child: CircleAvatar(
-                      backgroundColor: Colors.grey[100],
-                      child: Icon(
-                        Icons.directions_bus,
-                        color: Colors.white,
-                        size:30,
+              SpringTranslate(
+                motion: Motion.Mirror,
+                beginOffset: Offset(-1, -3),
+                endOffset: Offset.zero,
+                animStatus: (T) => print(T),
+                child: AvatarGlow(
+                  glowColor: Colors.blue,
+                  endRadius: 100.0,
+                  duration: Duration(milliseconds: 2000),
+                  repeat: true,
+                  showTwoGlows: true,
+                  repeatPauseDuration: Duration(milliseconds: 100),
+                  child: GestureDetector(
+                    onTap: (){
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => MyHomePage()));
+                    },
+                    child: Material(
+                      elevation: 8.0,
+                      shape: CircleBorder(),
+                      child: CircleAvatar(
+                        backgroundColor: Colors.white,
+                        child: Icon(
+                          Icons.directions_bus,
+                          color: Colors.blue,
+                          size:70,
+                        ),
+                        radius: 60.0,
                       ),
-                      radius: 40.0,
                     ),
                   ),
                 ),
-              ),  */
-              SpringScale(
+              ),
+       /*       SpringScale(
                    motion: Motion.Mirror,
                    begin: 0.9,
                    end: 1.0,
@@ -162,7 +168,7 @@ class _HomeScreenState extends State<HomeScreen> {
                        ),
                      ),
                    ),
-               ),
+               ), */
             /*  SizedBox(height: 10,),
               SpringScale(
                 motion: Motion.Mirror,

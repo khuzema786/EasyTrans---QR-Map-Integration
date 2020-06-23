@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:qr_gen_rd/styles/loading.dart';
+import 'package:spring/spring.dart';
+import 'package:spring/springs/spring_translate.dart';
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
@@ -182,32 +184,38 @@ class _MapState extends State<Map> {
               Positioned(
                 bottom: 18,
                 right: 65,
-                child: Container(
-                  width: 60,
-                  height: 60,
-                  child: FittedBox(
-                    child: FloatingActionButton(
-                      hoverElevation: 5,
-                      elevation: 3,
-                      backgroundColor: Colors.blue.withOpacity(0.9),
-                      splashColor: Colors.deepOrange,
-                      onPressed: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => Payments()));
-                      },
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: <Widget>[
-                          Icon(Icons.payment,color: Colors.white,),
-                          Text(
-                            "BOOK",
-                            style: TextStyle(
-                              fontSize: 12,
-                              color: Colors.white,
+                child: SpringTranslate(
+                  motion: Motion.Mirror,
+                  beginOffset: Offset(-1, -3),
+                  endOffset: Offset.zero,
+                  animStatus: (T) => print(T),
+                  child: Container(
+                    width: 60,
+                    height: 60,
+                    child: FittedBox(
+                      child: FloatingActionButton(
+                        hoverElevation: 5,
+                        elevation: 4,
+                        backgroundColor: Colors.blue.withOpacity(0.9),
+                        splashColor: Colors.deepOrange,
+                        onPressed: () {
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (context) => Payments()));
+                        },
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: <Widget>[
+                            Icon(Icons.payment,color: Colors.white,),
+                            Text(
+                              "BOOK",
+                              style: TextStyle(
+                                fontSize: 12,
+                                color: Colors.white,
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   ),

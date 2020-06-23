@@ -73,7 +73,7 @@ class _GuideScreenState extends State<GuideScreen> {
                     children: <Widget>[
                       SpringTranslate(
                         motion: Motion.Mirror,
-                        beginOffset: Offset(-2, -4),
+                        beginOffset: Offset(-1, -3),
                         endOffset: Offset.zero,
                         animStatus: (T) => print(T),
                         child: Card(
@@ -121,10 +121,11 @@ class _GuideScreenState extends State<GuideScreen> {
                       Padding(
                         padding: const EdgeInsets.all(15.0),
                         child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
                             SpringTranslate(
                               motion: Motion.Mirror,
-                              beginOffset: Offset(-2, -4),
+                              beginOffset: Offset(-1, -3),
                               endOffset: Offset.zero,
                               animStatus: (T) => print(T),
                               child: Card(

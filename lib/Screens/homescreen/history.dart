@@ -1,3 +1,5 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:qr_flutter/qr_flutter.dart';
@@ -6,6 +8,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:qr_gen_rd/styles/clip_path.dart';
 import 'package:qr_gen_rd/styles/navbar.dart';
 import 'package:avatar_glow/avatar_glow.dart';
+import 'package:spring/spring.dart';
 
 class History extends StatefulWidget {
   @override
@@ -21,11 +24,15 @@ class _HistoryState extends State<History> {
           child: SingleChildScrollView(
             child: Center(
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   ClipPath(
                     clipper: MyClipper(),
                     child: Container(
                       decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: AssetImage("images/history.png"),
+                        ),
                         gradient:LinearGradient(
                           begin: Alignment.topRight,
                           end: Alignment.bottomLeft,
@@ -37,7 +44,29 @@ class _HistoryState extends State<History> {
                       ),
                       width: double.infinity,
                       height: 250,
-                      child: Stack(alignment: Alignment.center, children: <Widget>[
+                      child: Stack(alignment: Alignment.centerLeft, children: <Widget>[
+                        Positioned(
+                          left: 23,
+                          top: 23,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: <Widget>[
+                              TypewriterAnimatedTextKit(
+                                text: ['Trip History'],
+                                repeatForever: true,
+                                textAlign: TextAlign.center,
+                                textStyle: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 16.0,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ]),
+                     /* child: Stack(alignment: Alignment.center, children: <Widget>[
                         Text(
                           "Trip History",
                           textAlign: TextAlign.center,
@@ -49,101 +78,100 @@ class _HistoryState extends State<History> {
                             ),
                           ),
                         ),
-                      ]),
+                      ]), */
                     ),
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 15.0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: <Widget>[
-                      AvatarGlow(
-                        glowColor: Colors.blue,
-                        endRadius: 90.0,
-                        duration: Duration(milliseconds: 2000),
-                        repeat: true,
-                        showTwoGlows: true,
-                        repeatPauseDuration: Duration(milliseconds: 100),
-                        child: Material(
-                          elevation: 8.0,
-                          shape: CircleBorder(),
+                        SpringTranslate(
+                          motion: Motion.Mirror,
+                          beginOffset: Offset(-1, -2),
+                          endOffset: Offset.zero,
+                          animStatus: (T) => print(T),
                           child: CircleAvatar(
-                            backgroundColor: Colors.white,
+                            backgroundColor: Colors.blue,
                             child: Icon(
-                              MdiIcons.humanMaleBoy,
-                              color: Colors.blue,
+                              Icons.directions_bus,
+                              color: Colors.white,
+                              size:30,
                             ),
                             radius: 40.0,
                           ),
                         ),
-                      ),
-          /*            SizedBox(
-                        width: 5,
-                      ),
                       Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: Container(
-                          decoration: BoxDecoration(
-                            boxShadow: [
-                              BoxShadow(
-                                  color: Colors.grey,
-                                  offset: Offset(1.0, 2.0),
-                                  blurRadius: 5,
-                                  spreadRadius: 0.3)
-                            ],
-                            borderRadius: BorderRadius.circular(18),
-                            color: Colors.blue,
-                          ),
-                          height:150,
-                          width: double.infinity,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: <Widget>[
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: <Widget>[
-                                  Icon(
-                                      Icons.my_location
-                                  ),
-                                  SizedBox(
-                                    width: 10,
-                                  ),
-                                  Text(
-                                    'Source',
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                        fontSize: 16,
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                ],
-                              ),
-                              SizedBox(
-                                height: 5,
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: <Widget>[
-                                  Icon(
-                                      Icons.location_on
-                                  ),
-                                  SizedBox(
-                                    width: 10,
-                                  ),
-                                  Text(
-                                    'Destination',
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                        fontSize: 16,
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                ],
-                              ),
-                            ],
+                        padding: const EdgeInsets.only(bottom:15.0,left: 15,top: 15),
+                        child: SpringTranslate(
+                          motion: Motion.Mirror,
+                          beginOffset: Offset(-1, -2),
+                          endOffset: Offset.zero,
+                          animStatus: (T) => print(T),
+                          child: Container(
+                            decoration: BoxDecoration(
+//                            boxShadow: [
+//                              BoxShadow(
+//                                  color: Colors.grey,
+//                                  offset: Offset(1.0, 2.0),
+//                                  blurRadius: 3,
+//                                  spreadRadius: 0.2)
+//                            ],
+                              borderRadius: BorderRadius.circular(18),
+                              color: Colors.blue,
+                            ),
+                            height:65,
+                            width: 190,
+                      /*    child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: <Widget>[
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: <Widget>[
+                                    Icon(
+                                        Icons.my_location
+                                    ),
+                                    SizedBox(
+                                      width: 10,
+                                    ),
+                                    Text(
+                                      'Source',
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                          fontSize: 16,
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: <Widget>[
+                                    Icon(
+                                        Icons.location_on
+                                    ),
+                                    SizedBox(
+                                      width: 10,
+                                    ),
+                                    Text(
+                                      'Destination',
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                          fontSize: 16,
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ), */
                           ),
                         ),
-                      ),    */
+                      ),
                     ],),
                   ),
                 ],
