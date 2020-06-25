@@ -1,35 +1,32 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:qr_gen_rd/services/database.dart';
+import 'package:qr_gen_rd/Models/user.dart';
 
-/*Contains Class for Authentication Services 
-Functions:
-  signInAnon :- Sign in as anonymous
-  signOut :- Sign Out account*/
+// Contains Class for performing Authentication Services
+
 
 class AuthService {
-  final FirebaseAuth _auth = FirebaseAuth
-      .instance; // Used to start an instance to connect to FireBase auth-services
 
+  // Used to start an instance to connect to FirebaseAuth-services
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+
+  // Creates a User Object to extract the meaningful & required user data from FirebaseUser Object
   User _userFromFirebaseUser(FirebaseUser user) {
-    // Create a user obj from FirebaseUser obj, Get us desired user properties
     return user != null ? User(uid: user.uid) : null;
   }
 
-  //this below here creates a stream.. there by we can continously keep a lookout on User obj for changes
+  // Stream for continuous lookout of User Object, Returns User data when signed-in & null when signed-out
   Stream<User> get user {
-    //Receiving a  stream.... using getter...this returns a User datatype
-    return _auth
-        .onAuthStateChanged //this is the Stream that returns firebase user object
-        .map(_userFromFirebaseUser); //mapping firebaseuser obj to user obj
+    return _auth.onAuthStateChanged // This is the Stream that returns FirebaseUser Object
+    // .map((FirebaseUser user) => _userFromFirebaseUser(user));
+        .map(_userFromFirebaseUser); // Mapping FirebaseUser Object to User Object
   }
-  // we are gonna recieve a Null when user signs out
 
-  //sign in using anon
+  // Sign-in Anonymously
   Future signInAnon() async {
     try {
       AuthResult result = await _auth
-          .signInAnonymously(); //signing in anon...await because we need to wait for returned value
-      //in this result object we have a Firebase User object
+          .signInAnonymously();
       FirebaseUser user = result.user;
       User _user = _userFromFirebaseUser(user);
       return _user;
@@ -39,11 +36,10 @@ class AuthService {
     }
   }
 
-  //sign in using email and password
+  // Sign-in using email and password
   Future signinWithEmailAndPassword(String email, String password) async {
     try {
-      AuthResult result = await _auth.signInWithEmailAndPassword(
-          email: email, password: password);
+      AuthResult result = await _auth.signInWithEmailAndPassword(email: email, password: password);
       FirebaseUser user = result.user;
       return _userFromFirebaseUser(user);
     } catch (e) {
@@ -52,16 +48,13 @@ class AuthService {
     }
   }
 
-  //register with email and password
+  // Register with email and password
   Future registerWithEmailAndPassword(
       String email, String password, UserPersonelData data) async {
     try {
-      AuthResult result = await _auth.createUserWithEmailAndPassword(
-          email: email, password: password); //using builtIn Method
+      AuthResult result = await _auth.createUserWithEmailAndPassword(email: email, password: password); // Using built-in method
       FirebaseUser user = result.user;
-
-      //create a new document for the user with the uid
-      await DatabaseService(uid: user.uid).updateUserData(data);
+      await UserDatabaseService(uid: user.uid).updateUserData(data); // Create a new document for the user with the uid
       return _userFromFirebaseUser(user);
     } catch (e) {
       print(e.toString());
@@ -69,7 +62,7 @@ class AuthService {
     }
   }
 
-  //sign out
+  // Sign-out
   Future signout() async {
     try {
       return await _auth.signOut();
@@ -78,4 +71,5 @@ class AuthService {
       return null;
     }
   }
-}
+
+} // AuthService

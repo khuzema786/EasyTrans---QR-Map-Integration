@@ -54,6 +54,8 @@ dependencies:
   curved_navigation_bar: ^0.3.3
   spring: ^1.0.4
   avatar_glow: ^1.2.0
+  unicorndial: ^1.1.5
+  autocomplete_textfield: ^1.7.3
 
   #----------------------------------------------------------------------
 
@@ -89,6 +91,7 @@ flutter:
     - images/scan.png
     - images/qr.png
     - images/history.png
+    - images/update.png
 
   #   - images/a_dot_ham.jpeg
 

@@ -4,10 +4,8 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 import 'package:qr_gen_rd/Screens/homescreen/gen.dart';
 import 'package:qr_gen_rd/Screens/homescreen/guide.dart';
 import 'package:qr_gen_rd/Screens/homescreen/history.dart';
-import 'package:qr_gen_rd/Screens/homescreen/scan.dart';
 import 'package:qr_gen_rd/Screens/wrapper.dart';
 
-void main() => runApp(MaterialApp(home: BottomNavBar()));
 
 class BottomNavBar extends StatefulWidget {
 
@@ -32,7 +30,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
             Icon(Icons.history, size: 30,color: Colors.white),
             Icon(MdiIcons.bookOpen, size: 30,color: Colors.white),
             Icon(MdiIcons.qrcode, size: 30,color: Colors.white),
-            Icon(MdiIcons.qrcodeScan, size: 30,color: Colors.white),
+//            Icon(MdiIcons.qrcodeScan, size: 30,color: Colors.white),
           ],
           color: Colors.blue,
           buttonBackgroundColor: Colors.blue,
@@ -65,12 +63,12 @@ class _BottomNavBarState extends State<BottomNavBar> {
                     MaterialPageRoute(
                         builder: (context) => GenerateScreen()));
               }
-              if(index==4){
-                Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => ScanScreen()));
-              }
+//              if(index==4){
+//                Navigator.pushReplacement(
+//                    context,
+//                    MaterialPageRoute(
+//                        builder: (context) => ScanScreen()));
+//              }
             });
           },
         );

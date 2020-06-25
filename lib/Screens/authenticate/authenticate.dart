@@ -3,7 +3,7 @@ import 'package:qr_gen_rd/Screens/authenticate/sign_in.dart';
 import 'package:qr_gen_rd/Screens/authenticate/resgister.dart';
 
 
-/*A Wrapper For Switching Between SignIn form and Register Form */
+// A Wrapper For Switching Between Sign-in & Register Screen
 
 class Authenticate extends StatefulWidget {
   @override
@@ -12,9 +12,9 @@ class Authenticate extends StatefulWidget {
 
 class _AuthenticateState extends State<Authenticate> {
 
-  bool showSignIn = true;  // If this is true we show signIn widget
+  bool showSignIn = true; // If this is true we show Sign-in widget
   void toggleView(){
-    setState(() => showSignIn = !showSignIn);   //Reversing the current state of showSignIn 
+    setState(() => showSignIn = !showSignIn); // Reversing the current state of showSignIn
   }
 
   @override

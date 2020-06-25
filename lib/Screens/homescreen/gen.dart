@@ -8,7 +8,6 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:qr_gen_rd/Screens/homescreen/home_screen.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:qr_gen_rd/styles/clip_path.dart';
 import 'package:qr_gen_rd/styles/navbar.dart';
 
@@ -56,7 +55,8 @@ class GenerateScreenState extends State<GenerateScreen> {
                             children: <Widget>[
                               TypewriterAnimatedTextKit(
                                 text: ['Scan Your Code'],
-                                repeatForever: true,
+                                speed: Duration(milliseconds: 250),
+                                isRepeatingAnimation: false,
                                 textAlign: TextAlign.center,
                                 textStyle: TextStyle(
                                   color: Colors.white,

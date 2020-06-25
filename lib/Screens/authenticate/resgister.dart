@@ -1,30 +1,31 @@
 import 'package:flutter/material.dart';
-import 'package:qr_gen_rd/styles/loading.dart';
+import 'package:provider/provider.dart';
 import 'package:qr_gen_rd/services/database.dart';
+import 'package:qr_gen_rd/styles/loading.dart';
+import 'package:qr_gen_rd/Models/user.dart';
 import 'package:qr_gen_rd/services/auth.dart';
 import 'package:qr_gen_rd/styles/style.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:qr_gen_rd/styles/clip_path.dart';
 
-/*Function To Provide New Account Regestration Service to our App via FireBase Authentication Service */
+
+// Function To Provide New Account Registration Services to our App via FireBase Authentication Service
 
 class Register extends StatefulWidget {
-  //we create inside the WIDGET not the state a property to accept toggling fucntion
-  final Function toggleFunction; //the function we recived as a parameter
+
+  final Function toggleFunction;
   Register(
-      {this.toggleFunction}); //Constructor used in making passsed parameter a property of widget!..Sounds rather tricky eh
-  //however this function can be used inside state object
+      {this.toggleFunction});
 
   @override
   _RegisterState createState() => _RegisterState();
 }
 
 class _RegisterState extends State<Register> {
-  //STATE OBJECT for the widget
 
   final AuthService _auth = AuthService();
   final _formKey = GlobalKey<
-      FormState>(); //A global key of FormState..Use it to identify our form
+      FormState>();
   bool loading = false;
 
   final UserPersonelData data = UserPersonelData();
@@ -110,7 +111,7 @@ class _RegisterState extends State<Register> {
                                 //For email
                                 decoration: InputDecoration(
                                     labelText: 'Email',
-                                    hintText: 'doe@gmail.com',
+                                    hintText: 'test123@gmail.com',
                                     fillColor: Colors.white,
                                     filled: true,
                                     enabledBorder: OutlineInputBorder(
@@ -121,9 +122,7 @@ class _RegisterState extends State<Register> {
                                             BorderSide(color: Colors.blue, width: 2.0))),
                                 validator: (value) => value.isEmpty
                                     ? 'Enter Email'
-                                    : null, //if value empty return helper text else return nothing
-                                //Validator takes a function and returns result to know if form is valid
-                                //our form is valid if there is somethin in there
+                                    : null, // If value is empty, return helper text else return null
                                 onChanged: (value) {
                                   setState(() {
                                     email = value;
@@ -288,10 +287,8 @@ class _RegisterState extends State<Register> {
                                       if (result == null) {
                                         setState(() {
                                           loading = false;
-                                          error = 'Please Supply a Valid email!';
+                                          error = 'Please Supply Valid Data';
                                         });
-                                        //Now understand this... IF there is Sucessful Registeration we have a Stream Setup already
-                                        //to send user to HomeScreen
                                       }
                                     }
                                   }),

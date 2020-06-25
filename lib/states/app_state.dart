@@ -93,15 +93,15 @@ class AppState with ChangeNotifier {
 
   //SOURCE
   void source(String source) async{
-    List<Placemark> placemark =
-    await Geolocator().placemarkFromAddress(source);
+    List<Placemark> placemark = await Geolocator().placemarkFromAddress(source);
     double latitude = placemark[0].position.latitude;
     double longitude = placemark[0].position.longitude;
     sourcePosition = LatLng(latitude, longitude);
+    locationController.text = source; // To have Auto-completed location name in the Source TextField
     _addMarker(sourcePosition, source);
   }
 
-  // SEND REQUEST
+  // SEND REQUEST -- DESTINATION
   void sendRequest(String intendedLocation) async {
     print("SENDING REQUEST =========");
     List<Placemark> placemark =
@@ -111,6 +111,7 @@ class AppState with ChangeNotifier {
     LatLng destination = LatLng(latitude, longitude);
     _addMarker(destination, intendedLocation);
     createRoute(sourcePosition, destination);
+    destinationController.text = intendedLocation; // To have Auto-completed location name in the Destination TextField
     notifyListeners();
   }
 

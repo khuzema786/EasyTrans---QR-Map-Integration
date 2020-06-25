@@ -1,20 +1,23 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:qr_gen_rd/styles/clip_path.dart';
-import 'package:qr_gen_rd/styles/navbar.dart';
+import 'package:qr_gen_rd/styles/navbar_admin.dart';
 import 'package:spring/spring.dart';
 
-class History extends StatefulWidget {
+class DriverDetails extends StatefulWidget {
   @override
-  _HistoryState createState() => _HistoryState();
+  _DriverDetailsState createState() => _DriverDetailsState();
 }
 
-class _HistoryState extends State<History> {
+class _DriverDetailsState extends State<DriverDetails> {
+
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
-        bottomNavigationBar: BottomNavBar(navIcon: 1,),
+        bottomNavigationBar: AdminNavBar(navIcon: 1,),
         body: SafeArea(
           child: SingleChildScrollView(
             child: Center(
@@ -48,7 +51,7 @@ class _HistoryState extends State<History> {
                             crossAxisAlignment: CrossAxisAlignment.end,
                             children: <Widget>[
                               TypewriterAnimatedTextKit(
-                                text: ['Trip History'],
+                                text: ['Driver Details'],
                                 speed: Duration(milliseconds: 250),
                                 isRepeatingAnimation: false,
                                 textAlign: TextAlign.center,
@@ -62,7 +65,7 @@ class _HistoryState extends State<History> {
                           ),
                         ),
                       ]),
-                     /* child: Stack(alignment: Alignment.center, children: <Widget>[
+                      /* child: Stack(alignment: Alignment.center, children: <Widget>[
                         Text(
                           "Trip History",
                           textAlign: TextAlign.center,
@@ -98,15 +101,15 @@ class _HistoryState extends State<History> {
                             radius: 40.0,
                           ),
                         ),
-                      Padding(
-                        padding: const EdgeInsets.only(bottom:15.0,left: 15,top: 15),
-                        child: SpringTranslate(
-                          motion: Motion.Mirror,
-                          beginOffset: Offset(-1, -2),
-                          endOffset: Offset.zero,
-                          animStatus: (T) => print(T),
-                          child: Container(
-                            decoration: BoxDecoration(
+                        Padding(
+                          padding: const EdgeInsets.only(bottom:15.0,left: 15,top: 15),
+                          child: SpringTranslate(
+                            motion: Motion.Mirror,
+                            beginOffset: Offset(-1, -2),
+                            endOffset: Offset.zero,
+                            animStatus: (T) => print(T),
+                            child: Container(
+                              decoration: BoxDecoration(
 //                            boxShadow: [
 //                              BoxShadow(
 //                                  color: Colors.grey,
@@ -114,66 +117,42 @@ class _HistoryState extends State<History> {
 //                                  blurRadius: 3,
 //                                  spreadRadius: 0.2)
 //                            ],
-                              borderRadius: BorderRadius.circular(18),
-                              color: Colors.blue,
-                            ),
-                            height:65,
-                            width: 200,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: <Widget>[
-                                Row(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: <Widget>[
-                                    Icon(
-                                        Icons.my_location,
-                                      color: Colors.white,
-                                    ),
-                                    SizedBox(
-                                      width: 10,
-                                    ),
-                                    Text(
-                                      'Source',
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                          fontSize: 16,
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                  ],
-                                ),
-                                SizedBox(
-                                  height: 6,
-                                ),
-                                Row(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: <Widget>[
-                                    Icon(
-                                        Icons.location_on,
-                                      color: Colors.white,
-                                    ),
-                                    SizedBox(
-                                      width: 10,
-                                    ),
-                                    Text(
-                                      'Destination',
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                          fontSize: 16,
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                  ],
-                                ),
-                              ],
+                                borderRadius: BorderRadius.circular(18),
+                                color: Colors.blue,
+                              ),
+                              height:65,
+                              width: 200,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: <Widget>[
+                                  Row(
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: <Widget>[
+                                      Icon(
+                                        MdiIcons.bus,
+                                        color: Colors.white,
+                                      ),
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                      Text(
+                                        "Mr. DriverName",
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                            fontSize: 16,
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                    ],),
+                      ],),
                   ),
                 ],
               ),

@@ -53,7 +53,8 @@ class _GuideScreenState extends State<GuideScreen> {
                               children: <Widget>[
                                 TypewriterAnimatedTextKit(
                                   text: ['Guidelines'],
-                                  repeatForever: true,
+                                  speed: Duration(milliseconds: 250),
+                                  isRepeatingAnimation: false,
                                   textAlign: TextAlign.center,
                                   textStyle: TextStyle(
                                     color: Colors.white,
@@ -68,8 +69,10 @@ class _GuideScreenState extends State<GuideScreen> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(15.0),
+                  padding: const EdgeInsets.only(bottom: 30, left: 15, right: 15, top: 15),
                   child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       SpringTranslate(
                         motion: Motion.Mirror,
@@ -77,11 +80,13 @@ class _GuideScreenState extends State<GuideScreen> {
                         endOffset: Offset.zero,
                         animStatus: (T) => print(T),
                         child: Card(
+                          margin: EdgeInsets.only(left: 15, right: 15),
                           elevation: 3,
                           color: Colors.blue,
                           child: Padding(
                             padding: const EdgeInsets.all(15.0),
                             child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
                                 Text(
                                   'Guidelines',
@@ -99,6 +104,7 @@ class _GuideScreenState extends State<GuideScreen> {
                                     fontSize: 16,
                                   ),
                                 ),
+                                SizedBox(height: 5),
                                 Text(
                                   'Mask is compulsory',
                                   style: TextStyle(
@@ -106,6 +112,7 @@ class _GuideScreenState extends State<GuideScreen> {
                                     fontSize: 16,
                                   ),
                                 ),
+                                SizedBox(height: 5),
                                 Text(
                                   'Avoid travel if any medical history',
                                   style: TextStyle(
@@ -118,52 +125,48 @@ class _GuideScreenState extends State<GuideScreen> {
                           ),
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.all(15.0),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            SpringTranslate(
-                              motion: Motion.Mirror,
-                              beginOffset: Offset(-1, -3),
-                              endOffset: Offset.zero,
-                              animStatus: (T) => print(T),
-                              child: Card(
-                                elevation: 3,
-                                color: Colors.blue,
-                                child: Padding(
-                                  padding: const EdgeInsets.all(36.0),
-                                  child: Column(
-                                    children: <Widget>[
-                                      Text(
-                                        'Emergency',
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 30,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ),
-                                      SizedBox(height: 10,),
-                                      Text(
-                                        'Dial 911 for any emergency',
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 16,
-                                        ),
-                                      ),
-                                      Text(
-                                        'Mail us for any queries',
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 16,
-                                        ),
-                                      ),
-                                    ],
+                      SizedBox(height: 30),
+                      SpringTranslate(
+                        motion: Motion.Mirror,
+                        beginOffset: Offset(-1, -3),
+                        endOffset: Offset.zero,
+                        animStatus: (T) => print(T),
+                        child: Card(
+                          margin: EdgeInsets.only(left: 15, right: 15),
+                          elevation: 3,
+                          color: Colors.blue,
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 15.0, right: 59, top: 15, bottom: 15),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                Text(
+                                  'Emergency',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 30,
+                                    fontWeight: FontWeight.bold,
                                   ),
                                 ),
-                              ),
+                                SizedBox(height: 10,),
+                                Text(
+                                  'Dial 911 for any emergency',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 16,
+                                  ),
+                                ),
+                                SizedBox(height: 5),
+                                Text(
+                                  'Mail us for any queries',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 16,
+                                  ),
+                                ),
+                              ],
                             ),
-                          ],
+                          ),
                         ),
                       ),
                     ],
