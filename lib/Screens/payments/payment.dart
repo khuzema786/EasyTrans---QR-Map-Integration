@@ -197,7 +197,7 @@ class _PaymentsState extends State<Payments> {
                                 FittedBox(
                                   child: Row(
                                     crossAxisAlignment: CrossAxisAlignment.center,
-                                    mainAxisAlignment: MainAxisAlignment.start,
+
                                     children: <Widget>[
                                       SizedBox(width: 5),
                                       Icon(
@@ -221,7 +221,7 @@ class _PaymentsState extends State<Payments> {
                                 FittedBox(
                                   child: Row(
                                     crossAxisAlignment: CrossAxisAlignment.center,
-                                    mainAxisAlignment: MainAxisAlignment.start,
+
                                     children: <Widget>[
                                       SizedBox(width: 5),
                                       Icon(
@@ -245,7 +245,7 @@ class _PaymentsState extends State<Payments> {
                                 FittedBox(
                                   child: Row(
                                     crossAxisAlignment: CrossAxisAlignment.center,
-                                    mainAxisAlignment: MainAxisAlignment.start,
+
                                     children: <Widget>[
                                       Icon(
                                         Icons.attach_money,

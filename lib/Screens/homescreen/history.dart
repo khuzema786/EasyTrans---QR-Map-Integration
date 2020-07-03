@@ -96,7 +96,7 @@ class _HistoryState extends State<History> {
                               color: Colors.blue,
                               size:40,
                             ),
-                            radius: 30.0,
+                            radius: 20.0,
                           ),
                         ),
                         Padding(
@@ -130,7 +130,7 @@ class _HistoryState extends State<History> {
                                         width: 10,
                                       ),
                                       Text(
-                                        routeBooked.source ?? '',
+                                        routeBooked == null? 'No Booking Found':routeBooked.source,
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
                                             fontSize: 16,
@@ -155,7 +155,7 @@ class _HistoryState extends State<History> {
                                         width: 10,
                                       ),
                                       Text(
-                                        routeBooked.destination ?? 'No Bookings',
+                                        routeBooked == null? 'Please Make A Booking':routeBooked.destination,
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
                                             fontSize: 16,
@@ -189,7 +189,7 @@ class _HistoryState extends State<History> {
                                               width: 10,
                                             ),
                                             Text(
-                                              routeBooked.time.toString().split(" ")[0]+':'+routeBooked.time.toString().split(" ")[1] ?? '',
+                                              routeBooked == null?' ':routeBooked.time.toString().split(" ")[0]+':'+routeBooked.time.toString().split(" ")[1],
                                               textAlign: TextAlign.center,
                                               style: TextStyle(
                                                   fontSize: 16,
@@ -213,7 +213,7 @@ class _HistoryState extends State<History> {
                                               width: 10,
                                             ),
                                             Text(
-                                              routeBooked.busno.toString() ?? '',
+                                              routeBooked == null?' ':routeBooked.busno.toString(),
                                               textAlign: TextAlign.center,
                                               style: TextStyle(
                                                   fontSize: 16,
@@ -236,7 +236,7 @@ class _HistoryState extends State<History> {
                                               width: 3,
                                             ),
                                             Text(
-                                              routeBooked.fare.toString() ?? '',
+                                              routeBooked == null?' ':routeBooked.fare.toString(),
                                               textAlign: TextAlign.center,
                                               style: TextStyle(
                                                   fontSize: 16,

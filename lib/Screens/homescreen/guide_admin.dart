@@ -21,6 +21,7 @@ class _GuideAdminState extends State<GuideAdmin> {
             child: SingleChildScrollView(
               child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
                     ClipPath(
                       clipper: MyClipper(),
@@ -51,7 +52,7 @@ class _GuideAdminState extends State<GuideAdmin> {
                                   crossAxisAlignment: CrossAxisAlignment.end,
                                   children: <Widget>[
                                     TypewriterAnimatedTextKit(
-                                      text: ['Future Releases Update'],
+                                      text: ['Guidelines'],
                                       speed: Duration(milliseconds: 250),
                                       isRepeatingAnimation: false,
                                       textAlign: TextAlign.center,
@@ -71,7 +72,7 @@ class _GuideAdminState extends State<GuideAdmin> {
                       padding: const EdgeInsets.only(bottom: 30, left: 15, right: 15, top: 15),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: <Widget>[
                           SpringTranslate(
                             motion: Motion.Mirror,
@@ -165,6 +166,15 @@ class _GuideAdminState extends State<GuideAdmin> {
                                     SizedBox(height: 5),
                                     Text(
                                       'Call 911 for medical emergencies',
+                                      textAlign: TextAlign.left,
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 16,
+                                      ),
+                                    ),
+                                    SizedBox(height: 5),
+                                    Text(
+                                      'Mail us on queries@easytrans.com for any app related queries',
                                       textAlign: TextAlign.left,
                                       style: TextStyle(
                                         color: Colors.white,

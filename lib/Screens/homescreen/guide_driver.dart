@@ -71,7 +71,7 @@ class _GuideDriverState extends State<GuideDriver> {
                       padding: const EdgeInsets.only(bottom: 30, left: 15, right: 15, top: 15),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: <Widget>[
                           SpringTranslate(
                             motion: Motion.Mirror,
@@ -159,7 +159,7 @@ class _GuideDriverState extends State<GuideDriver> {
                               elevation: 3,
                               color: Colors.blue,
                               child: Padding(
-                                padding: const EdgeInsets.only(top: 15.0, bottom: 15.0, left: 15.0, right: 103),
+                                padding: const EdgeInsets.only(top: 15.0, bottom: 15.0, left: 15.0, right: 15), // right: 103
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: <Widget>[
@@ -173,7 +173,7 @@ class _GuideDriverState extends State<GuideDriver> {
                                     ),
                                     SizedBox(height: 10,),
                                     Text(
-                                      'Call admin on +91 999999999',
+                                      'Call admin on +91 999999999 for any queries',
                                       textAlign: TextAlign.left,
                                       style: TextStyle(
                                         color: Colors.white,
@@ -183,6 +183,15 @@ class _GuideDriverState extends State<GuideDriver> {
                                     SizedBox(height: 5),
                                     Text(
                                       'Call 911 for medical emergencies',
+                                      textAlign: TextAlign.left,
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 16,
+                                      ),
+                                    ),
+                                    SizedBox(height: 5),
+                                    Text(
+                                      'Mail us on queries@easytrans.com for any app related queries',
                                       textAlign: TextAlign.left,
                                       style: TextStyle(
                                         color: Colors.white,

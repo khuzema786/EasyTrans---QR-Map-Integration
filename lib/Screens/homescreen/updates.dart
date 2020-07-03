@@ -69,7 +69,7 @@ class _UpdateScreenState extends State<UpdateScreen> {
                       padding: const EdgeInsets.only(bottom: 30, left: 15, right: 15, top: 15),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: <Widget>[
                           SpringTranslate(
                             motion: Motion.Mirror,
