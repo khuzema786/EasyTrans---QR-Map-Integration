@@ -128,8 +128,31 @@ class _DriverDetailsState extends State<DriverDetails> {
                                 children: <Widget>[
                                   Row(
                                     crossAxisAlignment: CrossAxisAlignment.center,
-                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    mainAxisAlignment: MainAxisAlignment.start,
                                     children: <Widget>[
+                                      SizedBox(width: 10),
+                                      Icon(
+                                        Icons.person,
+                                        color: Colors.white,
+                                      ),
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                      Text(
+                                        "Mr. Aditya Kumar ",
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                            fontSize: 16,
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    ],
+                                  ),
+                                  Row(
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: <Widget>[
+                                      SizedBox(width: 10),
                                       Icon(
                                         MdiIcons.bus,
                                         color: Colors.white,
@@ -138,7 +161,7 @@ class _DriverDetailsState extends State<DriverDetails> {
                                         width: 10,
                                       ),
                                       Text(
-                                        "Mr. DriverName",
+                                        "Bus No 21",
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
                                             fontSize: 16,

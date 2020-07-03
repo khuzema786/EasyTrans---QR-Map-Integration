@@ -168,7 +168,7 @@ class _ScanState extends State<ScanScreen> {
                                     color: Colors.white,
                                   ),
                                 ),
-                                 Text(barcode,textAlign: TextAlign.center,style: TextStyle(fontSize:16, color: Colors.white,fontWeight: FontWeight.bold),),
+                                 Text(barcode ?? '',textAlign: TextAlign.center,style: TextStyle(fontSize:16, color: Colors.white,fontWeight: FontWeight.bold),),
                                 SizedBox(height: 10,),
                                 Text(
                                   "Scan Near Entrance For Temperature Check",
@@ -179,7 +179,7 @@ class _ScanState extends State<ScanScreen> {
                                   ),
                                 ),
                                 Text(
-                                  tempResult,
+                                  tempResult ?? '',
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                       fontSize: 16,
@@ -206,7 +206,7 @@ class _ScanState extends State<ScanScreen> {
       String temp = await IotServices().getTemp();
       if (result.type == ResultType.Barcode) {
         // If we got desired scan result instead of error
-        setState(() async {
+        setState(() {
           this.barcode = result.rawContent;
           this.tempResult = temp;
         }); // Sets scanned content to variables

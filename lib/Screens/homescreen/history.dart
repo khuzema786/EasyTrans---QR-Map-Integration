@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:qr_gen_rd/styles/clip_path.dart';
 import 'package:qr_gen_rd/styles/navbar.dart';
 import 'package:spring/spring.dart';
+import 'package:qr_gen_rd/Screens/payments/payment.dart';
 
 class History extends StatefulWidget {
   @override
@@ -89,90 +90,170 @@ class _HistoryState extends State<History> {
                           endOffset: Offset.zero,
                           animStatus: (T) => print(T),
                           child: CircleAvatar(
-                            backgroundColor: Colors.blue,
+                            backgroundColor: Colors.white,
                             child: Icon(
                               Icons.directions_bus,
-                              color: Colors.white,
-                              size:30,
-                            ),
-                            radius: 40.0,
-                          ),
-                        ),
-                      Padding(
-                        padding: const EdgeInsets.only(bottom:15.0,left: 15,top: 15),
-                        child: SpringTranslate(
-                          motion: Motion.Mirror,
-                          beginOffset: Offset(-1, -2),
-                          endOffset: Offset.zero,
-                          animStatus: (T) => print(T),
-                          child: Container(
-                            decoration: BoxDecoration(
-//                            boxShadow: [
-//                              BoxShadow(
-//                                  color: Colors.grey,
-//                                  offset: Offset(1.0, 2.0),
-//                                  blurRadius: 3,
-//                                  spreadRadius: 0.2)
-//                            ],
-                              borderRadius: BorderRadius.circular(18),
                               color: Colors.blue,
+                              size:40,
                             ),
-                            height:65,
-                            width: 200,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: <Widget>[
-                                Row(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: <Widget>[
-                                    Icon(
+                            radius: 30.0,
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(bottom:15.0,left: 15,top: 15),
+                          child: SpringTranslate(
+                            motion: Motion.Mirror,
+                            beginOffset: Offset(-1, -2),
+                            endOffset: Offset.zero,
+                            animStatus: (T) => print(T),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(18),
+                                color: Colors.blue,
+                              ),
+                              height:115,
+                              width: 270,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: <Widget>[
+                                  Row(
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: <Widget>[
+                                      SizedBox(width: 5),
+                                      Icon(
                                         Icons.my_location,
-                                      color: Colors.white,
-                                    ),
-                                    SizedBox(
-                                      width: 10,
-                                    ),
-                                    Text(
-                                      'Source',
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                          fontSize: 16,
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                  ],
-                                ),
-                                SizedBox(
-                                  height: 6,
-                                ),
-                                Row(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: <Widget>[
-                                    Icon(
+                                        color: Colors.white,
+                                      ),
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                      Text(
+                                        routeBooked.source ?? '',
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                            fontSize: 16,
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(
+                                    height: 6,
+                                  ),
+                                  Row(
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: <Widget>[
+                                      SizedBox(width: 5),
+                                      Icon(
                                         Icons.location_on,
-                                      color: Colors.white,
-                                    ),
-                                    SizedBox(
-                                      width: 10,
-                                    ),
-                                    Text(
-                                      'Destination',
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                          fontSize: 16,
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                  ],
-                                ),
-                              ],
+                                        color: Colors.white,
+                                      ),
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                      Text(
+                                        routeBooked.destination ?? 'No Bookings',
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                            fontSize: 16,
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(
+                                    height: 7,
+                                  ),
+                                  Divider(
+                                    thickness: 2,
+                                    color: Colors.white,
+                                  ),
+                                  Row(
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                    children: <Widget>[
+                                      FittedBox(
+                                        child: Row(
+                                          crossAxisAlignment: CrossAxisAlignment.center,
+                                          mainAxisAlignment: MainAxisAlignment.start,
+                                          children: <Widget>[
+                                            SizedBox(width: 5),
+                                            Icon(
+                                              Icons.access_time,
+                                              color: Colors.white,
+                                            ),
+                                            SizedBox(
+                                              width: 10,
+                                            ),
+                                            Text(
+                                              routeBooked.time.toString().split(" ")[0]+':'+routeBooked.time.toString().split(" ")[1] ?? '',
+                                              textAlign: TextAlign.center,
+                                              style: TextStyle(
+                                                  fontSize: 16,
+                                                  color: Colors.white,
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      FittedBox(
+                                        child: Row(
+                                          crossAxisAlignment: CrossAxisAlignment.center,
+                                          mainAxisAlignment: MainAxisAlignment.start,
+                                          children: <Widget>[
+                                            SizedBox(width: 5),
+                                            Icon(
+                                              Icons.directions_bus,
+                                              color: Colors.white,
+                                            ),
+                                            SizedBox(
+                                              width: 10,
+                                            ),
+                                            Text(
+                                              routeBooked.busno.toString() ?? '',
+                                              textAlign: TextAlign.center,
+                                              style: TextStyle(
+                                                  fontSize: 16,
+                                                  color: Colors.white,
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      FittedBox(
+                                        child: Row(
+                                          crossAxisAlignment: CrossAxisAlignment.center,
+                                          mainAxisAlignment: MainAxisAlignment.start,
+                                          children: <Widget>[
+                                            Icon(
+                                              Icons.attach_money,
+                                              color: Colors.white,
+                                            ),
+                                            SizedBox(
+                                              width: 3,
+                                            ),
+                                            Text(
+                                              routeBooked.fare.toString() ?? '',
+                                              textAlign: TextAlign.center,
+                                              style: TextStyle(
+                                                  fontSize: 16,
+                                                  color: Colors.white,
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                            SizedBox(width: 10),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ),
-                      ),
                     ],),
                   ),
                 ],

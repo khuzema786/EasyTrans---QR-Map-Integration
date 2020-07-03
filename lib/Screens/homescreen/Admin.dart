@@ -178,7 +178,7 @@ class _AdminScreenState extends State<AdminScreen> {
                               // For Tame
                                 decoration: InputDecoration(
                                     labelText: 'Time In 24 hrs Format',
-                                    hintText: '1800 For 6pm',
+                                    hintText: '18 00 For 6pm',
                                     fillColor: Colors.white,
                                     filled: true,
                                     enabledBorder: OutlineInputBorder(
@@ -191,7 +191,7 @@ class _AdminScreenState extends State<AdminScreen> {
                                 value.isEmpty ? 'Enter Time' : null,
                                 onChanged: (value) {
                                   setState(() {
-                                    routesData.time = int.parse(value);
+                                    routesData.time = value;
                                   });
                                 }),
                             SizedBox(

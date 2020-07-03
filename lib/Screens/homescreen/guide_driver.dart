@@ -159,7 +159,7 @@ class _GuideDriverState extends State<GuideDriver> {
                               elevation: 3,
                               color: Colors.blue,
                               child: Padding(
-                                padding: const EdgeInsets.all(15.0),
+                                padding: const EdgeInsets.only(top: 15.0, bottom: 15.0, left: 15.0, right: 103),
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: <Widget>[

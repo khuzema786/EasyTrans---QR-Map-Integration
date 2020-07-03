@@ -8,6 +8,7 @@ import 'package:qr_gen_rd/styles/loading.dart';
 import 'package:spring/spring.dart';
 import 'package:spring/springs/spring_translate.dart';
 import 'package:autocomplete_textfield/autocomplete_textfield.dart';
+import 'package:qr_gen_rd/Models/route.dart';
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
@@ -175,6 +176,7 @@ class _MapState extends State<Map> {
                     textSubmitted: (text) => setState(() {
                       if (text != "") {
                         appState.source(text);
+                        src = text;
                         //appState.locationController;
                       }
                     }),
@@ -227,6 +229,7 @@ class _MapState extends State<Map> {
                     textSubmitted: (text) => setState(() {
                       if (text != "") {
                         appState.sendRequest(text);
+                        dest = text;
                         //appState.destinationController;
                       }
                     }),
@@ -267,8 +270,9 @@ class _MapState extends State<Map> {
                         hoverElevation: 5,
                         elevation: 4,
                         backgroundColor: Colors.blue.withOpacity(0.9),
-                        splashColor: Colors.deepOrange,
                         onPressed: () {
+                          routeBooked = getFare(src,dest);
+                          print(routeBooked.fare);
                           Navigator.push(context,
                               MaterialPageRoute(builder: (context) => Payments()));
                         },

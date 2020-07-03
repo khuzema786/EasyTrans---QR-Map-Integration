@@ -4,7 +4,6 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 import 'package:qr_gen_rd/Screens/homescreen/Admin.dart';
 import 'package:qr_gen_rd/Screens/homescreen/driver_details.dart';
 import 'package:qr_gen_rd/Screens/homescreen/guide_admin.dart';
-import 'package:qr_gen_rd/Screens/homescreen/scan.dart';
 
 
 class AdminNavBar extends StatefulWidget {

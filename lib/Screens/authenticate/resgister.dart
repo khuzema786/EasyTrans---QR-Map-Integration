@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:qr_gen_rd/services/database.dart';
 import 'package:qr_gen_rd/styles/loading.dart';
 import 'package:qr_gen_rd/Models/user.dart';
 import 'package:qr_gen_rd/services/auth.dart';

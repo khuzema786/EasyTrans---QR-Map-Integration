@@ -4,15 +4,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:provider/provider.dart';
-import 'package:qr_gen_rd/Models/route.dart';
 import 'package:qr_gen_rd/Screens/homescreen/Admin.dart';
 import 'package:qr_gen_rd/Screens/homescreen/scan.dart';
 import 'package:qr_gen_rd/Screens/homescreen/updates.dart';
 import 'package:qr_gen_rd/Screens/map/home.dart';
 import 'package:qr_gen_rd/services/auth.dart';
 import 'package:qr_gen_rd/Models/user.dart';
-import 'package:qr_gen_rd/services/database.dart';
 import 'package:qr_gen_rd/styles/clip_path.dart';
 import 'package:qr_gen_rd/styles/navbar.dart';
 import 'package:spring/spring.dart';
@@ -37,6 +34,11 @@ class _HomeScreenState extends State<HomeScreen> {
     // Floating Action Button Extended
     var childButtons = List<UnicornButton>();
     childButtons.add(UnicornButton(
+        hasLabel: true,
+        labelText: "Driver",
+        labelColor: Colors.white,
+        labelHasShadow: true,
+        labelBackgroundColor: Colors.blue,
         currentButton: FloatingActionButton(
             heroTag: "driver",
             elevation: 3,
@@ -50,6 +52,11 @@ class _HomeScreenState extends State<HomeScreen> {
             },
             child: Icon(MdiIcons.steering))));
     childButtons.add(UnicornButton(
+        hasLabel: true,
+        labelText: "Admin",
+        labelColor: Colors.white,
+        labelHasShadow: true,
+        labelBackgroundColor: Colors.blue,
         currentButton: FloatingActionButton(
             heroTag: "admin",
             elevation: 3,
@@ -63,6 +70,11 @@ class _HomeScreenState extends State<HomeScreen> {
             },
             child: Icon(Icons.person))));
     childButtons.add(UnicornButton(
+        hasLabel: true,
+        labelText: "Updates",
+        labelColor: Colors.white,
+        labelHasShadow: true,
+        labelBackgroundColor: Colors.blue,
         currentButton: FloatingActionButton(
             heroTag: "updates",
             elevation: 3,
@@ -187,6 +199,111 @@ class _HomeScreenState extends State<HomeScreen> {
                               backgroundColor: Colors.white,
                               child: Icon(
                                 Icons.directions_bus,
+                                color: Colors.blue,
+                                size: 70,
+                              ),
+                              radius: 60.0,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    SpringTranslate(
+                      motion: Motion.Mirror,
+                      beginOffset: Offset(-1, -3),
+                      endOffset: Offset.zero,
+                      animStatus: (T) => print(T),
+                      child: AvatarGlow(
+                        glowColor: Colors.blue,
+                        endRadius: 100.0,
+                        duration: Duration(milliseconds: 2000),
+                        repeat: true,
+                        showTwoGlows: true,
+                        repeatPauseDuration: Duration(milliseconds: 100),
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => MyHomePage()));
+                          },
+                          child: Material(
+                            elevation: 8.0,
+                            shape: CircleBorder(),
+                            child: CircleAvatar(
+                              backgroundColor: Colors.white,
+                              child: Icon(
+                                Icons.flight,
+                                color: Colors.blue,
+                                size: 70,
+                              ),
+                              radius: 60.0,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    SpringTranslate(
+                      motion: Motion.Mirror,
+                      beginOffset: Offset(-1, -3),
+                      endOffset: Offset.zero,
+                      animStatus: (T) => print(T),
+                      child: AvatarGlow(
+                        glowColor: Colors.blue,
+                        endRadius: 100.0,
+                        duration: Duration(milliseconds: 2000),
+                        repeat: true,
+                        showTwoGlows: true,
+                        repeatPauseDuration: Duration(milliseconds: 100),
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => MyHomePage()));
+                          },
+                          child: Material(
+                            elevation: 8.0,
+                            shape: CircleBorder(),
+                            child: CircleAvatar(
+                              backgroundColor: Colors.white,
+                              child: Icon(
+                                Icons.train,
+                                color: Colors.blue,
+                                size: 70,
+                              ),
+                              radius: 60.0,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    SpringTranslate(
+                      motion: Motion.Mirror,
+                      beginOffset: Offset(-1, -3),
+                      endOffset: Offset.zero,
+                      animStatus: (T) => print(T),
+                      child: AvatarGlow(
+                        glowColor: Colors.blue,
+                        endRadius: 100.0,
+                        duration: Duration(milliseconds: 2000),
+                        repeat: true,
+                        showTwoGlows: true,
+                        repeatPauseDuration: Duration(milliseconds: 100),
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => MyHomePage()));
+                          },
+                          child: Material(
+                            elevation: 8.0,
+                            shape: CircleBorder(),
+                            child: CircleAvatar(
+                              backgroundColor: Colors.white,
+                              child: Icon(
+                                Icons.local_taxi,
                                 color: Colors.blue,
                                 size: 70,
                               ),
