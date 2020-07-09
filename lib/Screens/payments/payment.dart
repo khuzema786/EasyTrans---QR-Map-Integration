@@ -40,7 +40,7 @@ class _PaymentsState extends State<Payments> {
   void openCheckout() {
     var options = {
       "key": "rzp_test_sTsWGkcw7UPbYR",
-      "amount": num.parse(textEditingController.text) * 100,
+      "amount": num.parse(routeBooked.fare.toString()) * 100,
       "name": "EasyTrans",
       "description": "Bus booking",
       "prefill": {
@@ -279,18 +279,6 @@ class _PaymentsState extends State<Payments> {
               padding: const EdgeInsets.all(15.0),
               child: Column(
                 children: <Widget>[
-                  TextField(
-                    controller: textEditingController
-                      ..text = routeBooked.fare.toString(),
-                    readOnly: true,
-                    enableInteractiveSelection: true,
-                    enabled: true,
-                    decoration: InputDecoration(
-                        hintText: "Amount to pay", icon: Icon(Icons.payment)),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
                   RaisedButton(
                     elevation: 2,
                     hoverElevation: 5,

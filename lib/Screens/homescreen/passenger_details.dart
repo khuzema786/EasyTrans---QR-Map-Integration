@@ -141,7 +141,8 @@ class _PassengerDetailsState extends State<PassengerDetails> {
                                         width: 10,
                                       ),
                                       Text(
-                                        widget.barcode ?? "No QR Scanned Yet",
+                                        "Test123",
+                                        //widget.barcode ?? "No QR Scanned Yet",
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
                                             fontSize: 16,

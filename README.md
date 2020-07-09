@@ -1,4 +1,5 @@
 # EasyTrans-Your Pocket Transport Companion
+!()[images/resume.gif]
 
 ## Don't forget to insert your APIKEY for the project to work
 

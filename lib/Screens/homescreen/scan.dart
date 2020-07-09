@@ -168,7 +168,7 @@ class _ScanState extends State<ScanScreen> {
                                     color: Colors.white,
                                   ),
                                 ),
-                                 Text(barcode ?? '',textAlign: TextAlign.center,style: TextStyle(fontSize:16, color: Colors.white,fontWeight: FontWeight.bold),),
+                                 Text("Test123",textAlign: TextAlign.center,style: TextStyle(fontSize:16, color: Colors.white,fontWeight: FontWeight.bold),),
                                 SizedBox(height: 10,),
                                 Text(
                                   "Scan Near Entrance For Temperature Check",
