@@ -56,6 +56,7 @@ dependencies:
   avatar_glow: ^1.2.0
   unicorndial: ^1.1.5
   autocomplete_textfield: ^1.7.3
+  intro_views_flutter: ^2.8.1
 
   #----------------------------------------------------------------------
 

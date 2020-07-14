@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:qr_gen_rd/styles/style.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intro_views_flutter/intro_views_flutter.dart';
+import 'package:intro_views_flutter/Models/page_view_model.dart';
 
 class StartUp extends StatefulWidget {
   @override
@@ -23,7 +25,7 @@ class _StartUpState extends State<StartUp> with SingleTickerProviderStateMixin {
         const Duration(seconds: 5),
         () => Navigator.pushReplacement(
               context,
-              MaterialPageRoute(builder: (context) => Wrapper()),
+              MaterialPageRoute(builder: (context) => Help()),
             ));
 
     // BG Animation
@@ -83,19 +85,142 @@ class _StartUpState extends State<StartUp> with SingleTickerProviderStateMixin {
     );
   }
 }
+class Help extends StatelessWidget {
+  final pages = [
+    PageViewModel(
+        pageColor: Colors.blue,
+        // iconImageAssetPath: 'assets/air-hostess.png',
+        bubble: Image.asset('images/history.png'),
+        body: Container(
+          margin: EdgeInsets.only(bottom: 50),
+          child: Text(
+            'Authenticate, Choose The Mode of Transport & Pay Online',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 18,
+            ),
+          ),
+        ),
+        title: Center(
+          child: Text(
+            "Mode of Transport",
+            textAlign: TextAlign.center,
+            style: GoogleFonts.lobster(
+              textStyle: TextStyle(
+                color: Colors.white,
+                fontSize: 40.0,
+                fontWeight: FontWeight.w400,
+              ),
+            ),
+          ),
+        ),
 
-//              SvgPicture.asset(
-//                  'images/Icon.svg',
-//                  height: 10,
-//                  width: 10,
-//                  color: white,
-//                  semanticsLabel: 'Logo'
-//              ),
+        titleTextStyle: TextStyle( color: Colors.white),
+        bodyTextStyle: TextStyle( color: Colors.white),
+        mainImage: Image.asset(
+          'images/history.png',
+          height: 285.0,
+          width: 285.0,
+          alignment: Alignment.center,
+        )
+    ),
 
-//              Divider(
-//                color: white,
-//                height: 20,
-//                thickness: 5,
-//                indent: 60,
-//                endIndent: 60,
-//              ),
+    PageViewModel(
+      pageColor: Colors.blue,
+      iconImageAssetPath: 'images/qr.png',
+      body: Container(
+        margin: EdgeInsets.only(bottom: 50),
+        child: Text(
+          'Integrated QR Scanning Technology',
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            fontSize: 18,
+
+          ),
+        ),
+      ),
+      title: Center(
+        child: Text(
+          "QR Scanning",
+          textAlign: TextAlign.center,
+          style: GoogleFonts.lobster(
+            textStyle: TextStyle(
+              color: Colors.white,
+              fontSize: 40.0,
+              fontWeight: FontWeight.w400,
+            ),
+          ),
+        ),
+      ),
+      mainImage: Image.asset(
+        'images/qr.png',
+        height: 285.0,
+        width: 285.0,
+        alignment: Alignment.center,
+      ),
+      titleTextStyle: TextStyle(color: Colors.white),
+      bodyTextStyle: TextStyle( color: Colors.white),
+    ),
+
+    PageViewModel(
+      pageColor: Colors.blue,
+      iconImageAssetPath: 'images/update.png',
+      body: Container(
+        margin: EdgeInsets.only(bottom: 50),
+        child: Text(
+          'Cutting Edge Realtime Temperature Sensing Technology Integration',
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            fontSize: 18,
+          ),
+        ),
+      ),
+      title: Center(
+        child: Text(
+          "Temperature",
+          textAlign: TextAlign.center,
+          style: GoogleFonts.lobster(
+            textStyle: TextStyle(
+              color: Colors.white,
+              fontSize: 40.0,
+              fontWeight: FontWeight.w400,
+            ),
+          ),
+        ),
+      ),
+      mainImage: Image.asset(
+        'images/update.png',
+        height: 285.0,
+        width: 285.0,
+        alignment: Alignment.center,
+      ),
+      titleTextStyle: TextStyle( color: Colors.white),
+      bodyTextStyle: TextStyle( color: Colors.white),
+    ),
+
+  ];
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(//ThemeData
+      body: Builder(
+        builder: (context) => IntroViewsFlutter(
+          pages,
+//          showNextButton: true,
+//          showBackButton: true,
+          onTapDoneButton: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => Wrapper(),
+              ), //MaterialPageRoute
+            );
+          },
+          pageButtonTextStyles: TextStyle(
+            color: Colors.white,
+            fontSize: 18.0,
+          ),
+        ), //IntroViewsFlutter
+      ), //Builder
+    );
+  }
+}
